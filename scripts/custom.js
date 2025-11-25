@@ -59,6 +59,8 @@
 
     const logoContainer = document.createElement('div');
     logoContainer.id = logoContainerId;
+    logoContainer.style.display = 'none';
+    logoContainer.style.opacity = '0';
 
     const logoImg = document.createElement('img');
     logoImg.src = '/logo.png';
@@ -72,55 +74,50 @@
     const logoContainer = document.getElementById(logoContainerId);
     if (!logoContainer) return;
 
-    let gameStarted = false;
+    let isVisible = false;
 
-    // Отслеживаем клики по всему документу
-    document.addEventListener('click', function(event) {
-      const target = event.target;
+    const hideLogo = () => {
+      if (!isVisible) return;
 
-      // Проверяем, был ли клик по кнопке или ссылке, которая может запустить игру
-      if (target.tagName === 'BUTTON' || target.tagName === 'A' ||
-          target.closest('button') || target.closest('a')) {
-
-        // Проверяем текст элемента на наличие слов, связанных со стартом игры
-        const text = target.textContent || '';
-        const isStartButton = /начать|start|играть|play|старт/i.test(text);
-
-        if (isStartButton) {
-          gameStarted = true;
-          // Скрываем логотип с плавной анимацией
-          logoContainer.style.transition = 'opacity 0.5s ease-out';
-          logoContainer.style.opacity = '0';
-          setTimeout(() => {
-            logoContainer.style.display = 'none';
-          }, 500);
-        }
-      }
-    });
-
-    // Также отслеживаем изменения в DOM, но только после клика на кнопку старта
-    const observer = new MutationObserver(function(mutations) {
-      // Проверяем только если игра уже начата
-      if (!gameStarted) return;
-
-      // Проверяем, не появилось ли игровое поле
-      const hasGameElements = document.querySelector('canvas, [class*="game"], [class*="level"], [class*="board"]');
-
-      if (hasGameElements && logoContainer.style.display !== 'none') {
-        logoContainer.style.transition = 'opacity 0.5s ease-out';
-        logoContainer.style.opacity = '0';
-        setTimeout(() => {
+      isVisible = false;
+      logoContainer.style.transition = 'opacity 0.5s ease-out';
+      logoContainer.style.opacity = '0';
+      setTimeout(() => {
+        if (!isVisible) {
           logoContainer.style.display = 'none';
-        }, 500);
-        observer.disconnect();
-      }
-    });
+        }
+      }, 500);
+    };
 
-    // Начинаем наблюдение за изменениями в body
+    const showLogo = () => {
+      if (isVisible) return;
+
+      isVisible = true;
+      logoContainer.style.display = 'block';
+      requestAnimationFrame(() => {
+        logoContainer.style.transition = 'opacity 0.3s ease-in';
+        logoContainer.style.opacity = '1';
+      });
+    };
+
+    const startScreenVisible = () => Boolean(document.querySelector('div._541cc'));
+
+    const syncLogo = () => {
+      if (startScreenVisible()) {
+        showLogo();
+      } else {
+        hideLogo();
+      }
+    };
+
+    const observer = new MutationObserver(syncLogo);
+
     observer.observe(document.body, {
       childList: true,
       subtree: true
     });
+
+    syncLogo();
   }
 
   function init() {
