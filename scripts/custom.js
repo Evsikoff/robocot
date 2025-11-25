@@ -120,6 +120,68 @@
     syncLogo();
   }
 
+  let mobileLogoObserver;
+
+  const mobileQuery = window.matchMedia('(max-width: 599px)');
+
+  function isMobile() {
+    return mobileQuery.matches;
+  }
+
+  function teardownDesktopLogo() {
+    const logoContainer = document.getElementById(logoContainerId);
+    if (logoContainer) {
+      logoContainer.remove();
+    }
+
+    const logoStyle = document.getElementById(logoStyleId);
+    if (logoStyle) {
+      logoStyle.remove();
+    }
+  }
+
+  function stopMobileLogoReplacement() {
+    if (mobileLogoObserver) {
+      mobileLogoObserver.disconnect();
+      mobileLogoObserver = null;
+    }
+  }
+
+  function setupMobileLogoReplacement() {
+    if (mobileLogoObserver) return;
+
+    const replaceLogo = () => {
+      const svgLogo = document.querySelector('svg._0af90');
+      if (!svgLogo || svgLogo.dataset.robocotLogoReplaced === 'true') return;
+
+      const img = document.createElement('img');
+      img.src = '/logo.png';
+      img.alt = 'Logo';
+      img.dataset.robocotLogoReplaced = 'true';
+
+      if (svgLogo.getAttribute('width')) {
+        const width = svgLogo.getAttribute('width');
+        img.style.width = width.endsWith('px') ? width : `${width}px`;
+      }
+
+      if (svgLogo.getAttribute('height')) {
+        const height = svgLogo.getAttribute('height');
+        img.style.height = height.endsWith('px') ? height : `${height}px`;
+      }
+
+      img.className = svgLogo.getAttribute('class') || '';
+      svgLogo.replaceWith(img);
+    };
+
+    mobileLogoObserver = new MutationObserver(replaceLogo);
+    mobileLogoObserver.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+
+    replaceLogo();
+  }
+
   function hideAddBoardButton(root = document) {
     const button = Array.from(root.querySelectorAll('button, a')).find(
       (el) => el.textContent.trim() === 'Legg til brett'
@@ -166,12 +228,23 @@
     applyTweaks();
   }
 
+  function applyResponsiveLogoBehavior() {
+    if (isMobile()) {
+      teardownDesktopLogo();
+      setupMobileLogoReplacement();
+    } else {
+      stopMobileLogoReplacement();
+      injectLogoStyles();
+      injectLogo();
+      setupLogoHiding();
+    }
+  }
+
   function init() {
     injectHidingStyles();
-    injectLogoStyles();
-    injectLogo();
-    setupLogoHiding();
     setupLevelSelectionTweaks();
+    applyResponsiveLogoBehavior();
+    mobileQuery.addEventListener('change', applyResponsiveLogoBehavior);
   }
 
   if (document.readyState === 'complete' || document.readyState === 'interactive') {
