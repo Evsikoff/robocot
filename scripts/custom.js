@@ -1,47 +1,28 @@
 (function () {
-  function removeElements(selector) {
-    document.querySelectorAll(selector).forEach((el) => {
-      if (el && el.parentElement) {
-        el.parentElement.removeChild(el);
+  const styleId = 'robocot-cleanup-style';
+
+  function injectHidingStyles() {
+    if (document.getElementById(styleId)) return;
+
+    const style = document.createElement('style');
+    style.id = styleId;
+    style.textContent = `
+      nav._8578b a[href="/kodedager"],
+      nav._8578b button._54d8a,
+      nav._8578b button._6ba2f,
+      ._30648,
+      .fe408,
+      svg._08ab7,
+      svg._08ab7 * {
+        display: none !important;
       }
-    });
-  }
+    `;
 
-  function removeNavItems() {
-    document
-      .querySelectorAll('nav._8578b a[href="/kodedager"], nav._8578b button._54d8a, nav._8578b button._6ba2f')
-      .forEach((el) => el.remove());
+    document.head.appendChild(style);
   }
-
-  function removeCookieBanner() {
-    removeElements('._30648');
-  }
-
-  function removeEventInfo() {
-    removeElements('.fe408');
-  }
-
-  function removeEquinorLogo() {
-    document.querySelectorAll('svg._08ab7').forEach((el) => {
-      const target = el.closest('button, div, span') || el;
-      if (target && target.parentElement) {
-        target.parentElement.removeChild(target);
-      }
-    });
-  }
-
-  function clean() {
-    removeNavItems();
-    removeCookieBanner();
-    removeEventInfo();
-    removeEquinorLogo();
-  }
-
-  const observer = new MutationObserver(clean);
 
   function init() {
-    clean();
-    observer.observe(document.body, { childList: true, subtree: true });
+    injectHidingStyles();
   }
 
   if (document.readyState === 'complete' || document.readyState === 'interactive') {
