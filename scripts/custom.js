@@ -54,6 +54,11 @@
     document.head.appendChild(style);
   }
 
+  function isInGameMode() {
+    // Проверяем наличие игровых элементов
+    return !!document.querySelector('canvas, [class*="game"], [class*="level"], [class*="board"]');
+  }
+
   function injectLogo() {
     if (document.getElementById(logoContainerId)) return;
 
@@ -68,52 +73,40 @@
     document.body.appendChild(logoContainer);
   }
 
-  function setupLogoHiding() {
+  function updateLogoVisibility() {
     const logoContainer = document.getElementById(logoContainerId);
-    if (!logoContainer) return;
 
-    let gameStarted = false;
-
-    // Отслеживаем клики по всему документу
-    document.addEventListener('click', function(event) {
-      const target = event.target;
-
-      // Проверяем, был ли клик по кнопке или ссылке, которая может запустить игру
-      if (target.tagName === 'BUTTON' || target.tagName === 'A' ||
-          target.closest('button') || target.closest('a')) {
-
-        // Проверяем текст элемента на наличие слов, связанных со стартом игры
-        const text = target.textContent || '';
-        const isStartButton = /начать|start|играть|play|старт/i.test(text);
-
-        if (isStartButton) {
-          gameStarted = true;
-          // Скрываем логотип с плавной анимацией
-          logoContainer.style.transition = 'opacity 0.5s ease-out';
-          logoContainer.style.opacity = '0';
-          setTimeout(() => {
-            logoContainer.style.display = 'none';
-          }, 500);
-        }
-      }
-    });
-
-    // Также отслеживаем изменения в DOM, но только после клика на кнопку старта
-    const observer = new MutationObserver(function(mutations) {
-      // Проверяем только если игра уже начата
-      if (!gameStarted) return;
-
-      // Проверяем, не появилось ли игровое поле
-      const hasGameElements = document.querySelector('canvas, [class*="game"], [class*="level"], [class*="board"]');
-
-      if (hasGameElements && logoContainer.style.display !== 'none') {
+    if (isInGameMode()) {
+      // В режиме игры - скрываем логотип
+      if (logoContainer && logoContainer.style.display !== 'none') {
         logoContainer.style.transition = 'opacity 0.5s ease-out';
         logoContainer.style.opacity = '0';
         setTimeout(() => {
           logoContainer.style.display = 'none';
         }, 500);
-        observer.disconnect();
       }
+    } else {
+      // На главном экране - показываем логотип
+      if (!logoContainer) {
+        injectLogo();
+      } else if (logoContainer.style.display === 'none') {
+        logoContainer.style.display = '';
+        logoContainer.style.opacity = '0';
+        setTimeout(() => {
+          logoContainer.style.transition = 'opacity 0.5s ease-in';
+          logoContainer.style.opacity = '1';
+        }, 10);
+      }
+    }
+  }
+
+  function setupLogoHiding() {
+    // Начальная проверка и установка видимости
+    updateLogoVisibility();
+
+    // Отслеживаем изменения в DOM
+    const observer = new MutationObserver(function(mutations) {
+      updateLogoVisibility();
     });
 
     // Начинаем наблюдение за изменениями в body
@@ -126,7 +119,6 @@
   function init() {
     injectHidingStyles();
     injectLogoStyles();
-    injectLogo();
     setupLogoHiding();
   }
 
