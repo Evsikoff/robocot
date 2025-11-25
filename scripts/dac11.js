@@ -3980,7 +3980,7 @@
                         n = t.levelGroups,
                         r = t.currentLevelGroup,
                         a = t.currentLevel,
-                        i = r + 1 >= n.length && a + 1 >= n[r].levels.length,
+                        i = a + 1 >= n[r].levels.length && (r + 1 >= n.length || 0 === n[r + 1].levels.length),
                         s = i ? f()("levelCompleteDialog.lastLevel") : f()("levelCompleteDialog.body");
                     return o.a.createElement("div", {
                         ref: this.dialogRef,
