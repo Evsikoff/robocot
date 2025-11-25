@@ -740,7 +740,7 @@
                             }, o.a.createElement(re, null), o.a.createElement("span", null, f()("nav.back")))
                         }
                     })), s && !c && o.a.createElement("button", {
-                        className: L()(fe.a.helpButton, "/" === location.pathname && s ? fe.a.helpButtonVisible : null),
+                        className: L()(fe.a.helpButton, s ? fe.a.helpButtonVisible : null),
                         onClick: function() {
                             y("help"), i(!0)
                         }
