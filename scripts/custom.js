@@ -59,6 +59,8 @@
 
     const logoContainer = document.createElement('div');
     logoContainer.id = logoContainerId;
+    logoContainer.style.display = 'none';
+    logoContainer.style.opacity = '0';
 
     const logoImg = document.createElement('img');
     logoImg.src = '/logo.png';
@@ -72,77 +74,50 @@
     const logoContainer = document.getElementById(logoContainerId);
     if (!logoContainer) return;
 
-    let gameStarted = false;
-    let isHidden = false;
+    let isVisible = false;
 
     const hideLogo = () => {
-      if (isHidden) return;
+      if (!isVisible) return;
 
-      isHidden = true;
+      isVisible = false;
       logoContainer.style.transition = 'opacity 0.5s ease-out';
       logoContainer.style.opacity = '0';
       setTimeout(() => {
-        logoContainer.style.display = 'none';
+        if (!isVisible) {
+          logoContainer.style.display = 'none';
+        }
       }, 500);
     };
 
-    const hasGameElements = () => {
-      return Boolean(
-        document.querySelector(
-          [
-            'canvas',
-            '[data-game-root]',
-            '.game-board',
-            '[class*="level-screen"]',
-            '[class*="game-canvas"]'
-          ].join(', ')
-        )
-      );
+    const showLogo = () => {
+      if (isVisible) return;
+
+      isVisible = true;
+      logoContainer.style.display = 'block';
+      requestAnimationFrame(() => {
+        logoContainer.style.transition = 'opacity 0.3s ease-in';
+        logoContainer.style.opacity = '1';
+      });
     };
 
-    // Отслеживаем клики по всему документу
-    document.addEventListener('click', function(event) {
-      const target = event.target;
+    const startScreenVisible = () => Boolean(document.querySelector('div._541cc'));
 
-      // Проверяем, был ли клик по кнопке или ссылке, которая может запустить игру
-      if (target.tagName === 'BUTTON' || target.tagName === 'A' ||
-          target.closest('button') || target.closest('a')) {
-
-        // Проверяем текст элемента на наличие слов, связанных со стартом игры
-        const text = target.textContent || '';
-        const isStartButton = /начать|start|играть|play|старт/i.test(text);
-
-        if (isStartButton) {
-          gameStarted = true;
-          // Скрываем логотип с плавной анимацией
-          hideLogo();
-        }
-      }
-    });
-
-    // Также отслеживаем изменения в DOM, но только после клика на кнопку старта
-    const observer = new MutationObserver(function(mutations) {
-      // Проверяем, не появилось ли игровое поле
-      if (hasGameElements()) {
-        gameStarted = true;
+    const syncLogo = () => {
+      if (startScreenVisible()) {
+        showLogo();
+      } else {
         hideLogo();
-        observer.disconnect();
       }
-    });
+    };
 
-    // Начинаем наблюдение за изменениями в body
+    const observer = new MutationObserver(syncLogo);
+
     observer.observe(document.body, {
       childList: true,
       subtree: true
     });
 
-    // Если пользователь сразу оказался на экране уровня (например, через прямую ссылку
-    // или при возврате на страницу), сразу скрываем логотип после инициализации.
-    if (hasGameElements()) {
-      gameStarted = true;
-      hideLogo();
-      observer.disconnect();
-    }
+    syncLogo();
   }
 
   function init() {
