@@ -55,8 +55,13 @@
   }
 
   function isInGameMode() {
-    // Проверяем наличие игровых элементов
-    return !!document.querySelector('canvas, [class*="game"], [class*="level"], [class*="board"]');
+    // Проверяем наличие canvas - это явный признак игры
+    const canvas = document.querySelector('canvas');
+    if (!canvas) return false;
+
+    // Убеждаемся, что canvas достаточно большой (игровой)
+    const rect = canvas.getBoundingClientRect();
+    return rect.width > 100 && rect.height > 100;
   }
 
   function injectLogo() {
