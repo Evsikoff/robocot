@@ -86,8 +86,19 @@
       }, 500);
     };
 
-    const hasGameElements = () =>
-      Boolean(document.querySelector('canvas, [class*="game"], [class*="level"], [class*="board"]'));
+    const hasGameElements = () => {
+      return Boolean(
+        document.querySelector(
+          [
+            'canvas',
+            '[data-game-root]',
+            '.game-board',
+            '[class*="level-screen"]',
+            '[class*="game-canvas"]'
+          ].join(', ')
+        )
+      );
+    };
 
     // Отслеживаем клики по всему документу
     document.addEventListener('click', function(event) {
