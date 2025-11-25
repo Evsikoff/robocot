@@ -4670,7 +4670,7 @@
                 },
                 levelCompleteDialog: {
                     body: "Ты справился!<br/>Давай попробуем следующий уровень.",
-                    lastLevel: "Hurra, du klarte siste brett!<br/>Nå kan du spille de om igjen.",
+                    lastLevel: "Ура, ты прошёл последний уровень!<br/>Теперь можешь сыграть заново.",
                     gotoLevels: "Выбрать уровень",
                     retryButtonLabel: "Играть снова",
                     nextButtonLable: "Далее"
@@ -4688,14 +4688,14 @@
                 },
                 helptext: {
                     "editor-select-tile": "Выбери, где разместить или изменить блок.",
-                    "editor-select-type-start": "Husk at du må ha med start, roboten Biip",
-                    "editor-select-type-end": "Du trenger også en vindmølle som Biip kan ha som mål",
-                    "editor-select-type-spaceship": "Ta også med Biip sitt romskip, slik at han kan fly hjem",
+                    "editor-select-type-start": "Вам обязательно нужно определить стартовую позицию для робота Biip",
+                    "editor-select-type-end": "Вам также понадобится ветряк, который Biip сможет использовать в качестве цели.",
+                    "editor-select-type-spaceship": "Также возьмите с собой космический корабль Биипа, чтобы он мог полететь домой.",
                     "editor-select-type-select": "Выбери тип блока, который хочешь использовать",
-                    "editor-select-type-delete": "Du kan slette ved å velge den blanke brikken",
-                    "editor-select-type-start-toomany": "Du kan bare ha én Biip. Velg den du vil slette, så den gjennomsiktige brikken.",
-                    "editor-select-type-end-toomany": "Du kan bare ha én Vindmølle. Velg den du vil slette, så den gjennomsiktige brikken.",
-                    "editor-select-type-spaceship-toomany": "Du kan bare ha ett romskip. Velg den du vil slette, så den gjennomsiktige brikken."
+                    "editor-select-type-delete": "Вы можете удалить, выбрав пустой фрагмент.",
+                    "editor-select-type-start-toomany": "Вы можете иметь только один Biip. Выберите тот, который хотите удалить, чтобы он стал прозрачным.",
+                    "editor-select-type-end-toomany": "Вы можете иметь только одну ветряную электростанцию. Выберите ту, которую хотите удалить, чтобы она стала прозрачной.",
+                    "editor-select-type-spaceship-toomany": "Вы можете иметь только один космический корабль. Выберите тот, который хотите удалить, чтобы он стал прозрачным."
                 }
             }
         },
@@ -7364,7 +7364,7 @@
                     getLevelError: !1,
                     currentCustomLevelCode: !1,
                     loadedCustomLevelCodes: [],
-                    levelGroups: [b, L, x, R, I, D]
+                    levelGroups: [b, L, x, R, I]
                 },
                 j = function(e, t, n, r, a) {
                     return B({}, t, {
