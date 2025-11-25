@@ -123,9 +123,18 @@
   let mobileLogoObserver;
 
   const mobileQuery = window.matchMedia('(max-width: 599px)');
+  const landscapeQuery = window.matchMedia('(orientation: landscape)');
 
   function isMobile() {
     return mobileQuery.matches;
+  }
+
+  function isLandscape() {
+    return landscapeQuery.matches;
+  }
+
+  function isMobileLandscape() {
+    return isMobile() && isLandscape();
   }
 
   function teardownDesktopLogo() {
@@ -229,14 +238,18 @@
   }
 
   function applyResponsiveLogoBehavior() {
-    if (isMobile()) {
+    if (isMobileLandscape()) {
       teardownDesktopLogo();
       setupMobileLogoReplacement();
     } else {
       stopMobileLogoReplacement();
-      injectLogoStyles();
-      injectLogo();
-      setupLogoHiding();
+      if (!isMobile()) {
+        injectLogoStyles();
+        injectLogo();
+        setupLogoHiding();
+      } else {
+        teardownDesktopLogo();
+      }
     }
   }
 
@@ -245,6 +258,7 @@
     setupLevelSelectionTweaks();
     applyResponsiveLogoBehavior();
     mobileQuery.addEventListener('change', applyResponsiveLogoBehavior);
+    landscapeQuery.addEventListener('change', applyResponsiveLogoBehavior);
   }
 
   if (document.readyState === 'complete' || document.readyState === 'interactive') {
