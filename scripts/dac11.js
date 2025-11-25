@@ -3980,7 +3980,7 @@
                         n = t.levelGroups,
                         r = t.currentLevelGroup,
                         a = t.currentLevel,
-                        i = a + 1 >= n[r].levels.length && (r + 1 >= n.length || 0 === n[r + 1].levels.length),
+                        i = r + 1 >= n.length && a + 1 >= n[r].levels.length,
                         s = i ? f()("levelCompleteDialog.lastLevel") : f()("levelCompleteDialog.body");
                     return o.a.createElement("div", {
                         ref: this.dialogRef,
@@ -5497,8 +5497,194 @@
                             commands: [p.c, p.b, p.f, p.e, p.d],
                             maxCommands: 8
                         },
-                        // Level 1: "Вверх и вниз". Набрать 3, пройти, сбросить до 0.
-                        // Path: Start -> +1 -> Barrier(=3) -> -1 -> Barrier(=0) -> End
+                        // Level 1: "Угол с буфером". Набрать 2, пройти, набрать 4.
+                        // Исправление: Добавлен пустой пол (f.v) перед вторым плюсом.
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                }, // +1
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 2
+                                }, // Barrier = 2
+                                {
+                                    x: 2,
+                                    y: 1,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Empty Buffer (Safe zone)
+                                {
+                                    x: 2,
+                                    y: 2,
+                                    type: f.w,
+                                    model: f.j
+                                }, // +1
+                                {
+                                    x: 2,
+                                    y: 3,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 4
+                                }, // Barrier = 4
+                                {
+                                    x: 2,
+                                    y: 4,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 8
+                        },
+
+                        // Level 2: "Зигзаг безопасный". Набрать 3, право, сбросить до 1.
+                        // Исправление: Добавлен пустой пол между барьером и минусом.
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                }, // +1
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 3
+                                }, // Barrier = 3
+                                {
+                                    x: 2,
+                                    y: -1,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Empty Buffer
+                                {
+                                    x: 2,
+                                    y: -2,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                }, // -1
+                                {
+                                    x: 2,
+                                    y: -3,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 1
+                                }, // Barrier = 1
+                                {
+                                    x: 2,
+                                    y: -4,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 8
+                        },
+
+                        // Level 3: "Ступенька вниз". Сброс до -2, право, сброс до -4.
+                        // Исправление: Добавлен буфер.
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                }, // -1
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: -2
+                                }, // Barrier = -2
+                                {
+                                    x: 2,
+                                    y: -1,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Empty Buffer
+                                {
+                                    x: 2,
+                                    y: -2,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                }, // -1
+                                {
+                                    x: 2,
+                                    y: -3,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: -4
+                                }, // Barrier = -4
+                                {
+                                    x: 3,
+                                    y: -3,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 8
+                        },
+
+                        // Level 4: "Разворот". Набрать 3, разворот, сбросить до 0.
+                        // Этот уровень был безопасным (есть f.v в углу), оставляем, немного оптимизировав.
                         {
                             completed: !1,
                             finished: !1,
@@ -5531,197 +5717,42 @@
                                 {
                                     x: 3,
                                     y: 0,
-                                    type: f.y,
-                                    model: f.l,
-                                    math: 1
-                                }, // -1
-                                {
-                                    x: 4,
-                                    y: 0,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: 0
-                                }, // Barrier = 0
-                                {
-                                    x: 5,
-                                    y: 0,
-                                    type: f.u,
-                                    model: f.q
-                                }
-                            ],
-                            commands: [p.c, p.b, p.f, p.e, p.d],
-                            maxCommands: 8
-                        },
-
-                        // Level 2: "Двойной подъем". Набрать 2, пройти, набрать еще до 4.
-                        // Path: Start -> +1 -> Barrier(=2) -> +1 -> Barrier(=4) -> End
-                        {
-                            completed: !1,
-                            finished: !1,
-                            attempts: 0,
-                            tiles: [{
-                                    x: -1,
-                                    y: 0,
-                                    type: f.z,
-                                    model: f.n
-                                },
-                                {
-                                    x: 0,
-                                    y: 0,
-                                    type: f.A,
+                                    type: f.v,
                                     model: f.h
-                                },
-                                {
-                                    x: 1,
-                                    y: 0,
-                                    type: f.w,
-                                    model: f.j
-                                },
-                                {
-                                    x: 2,
-                                    y: 0,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: 2
-                                },
+                                }, // Buffer turn
                                 {
                                     x: 3,
-                                    y: 0,
-                                    type: f.w,
-                                    model: f.j
-                                },
-                                {
-                                    x: 4,
-                                    y: 0,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: 4
-                                },
-                                {
-                                    x: 5,
-                                    y: 0,
-                                    type: f.u,
-                                    model: f.q
-                                }
-                            ],
-                            commands: [p.c, p.b, p.f, p.e, p.d],
-                            maxCommands: 8
-                        },
-
-                        // Level 3: "Отрицательный путь". Сбросить до -2, пройти, вернуться к 0.
-                        // Path: Start -> -1 -> Barrier(=-2) -> +1 -> Barrier(=0) -> End
-                        {
-                            completed: !1,
-                            finished: !1,
-                            attempts: 0,
-                            tiles: [{
-                                    x: -1,
-                                    y: 0,
-                                    type: f.z,
-                                    model: f.n
-                                },
-                                {
-                                    x: 0,
-                                    y: 0,
-                                    type: f.A,
+                                    y: 1,
+                                    type: f.v,
                                     model: f.h
-                                },
-                                {
-                                    x: 1,
-                                    y: 0,
-                                    type: f.y,
-                                    model: f.l,
-                                    math: 1
-                                },
-                                {
-                                    x: 2,
-                                    y: 0,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: -2
-                                },
-                                {
-                                    x: 3,
-                                    y: 0,
-                                    type: f.w,
-                                    model: f.j
-                                },
-                                {
-                                    x: 4,
-                                    y: 0,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: 0
-                                },
-                                {
-                                    x: 5,
-                                    y: 0,
-                                    type: f.u,
-                                    model: f.q
-                                }
-                            ],
-                            commands: [p.c, p.b, p.f, p.e, p.d],
-                            maxCommands: 8
-                        },
-
-                        // Level 4: "Поворот". Набрать 3, повернуть, сбросить до 1.
-                        // Path: Start -> +1 -> Barrier(=3) -> (Turn) -> -1 -> Barrier(=1) -> End
-                        {
-                            completed: !1,
-                            finished: !1,
-                            attempts: 0,
-                            tiles: [{
-                                    x: -1,
-                                    y: 0,
-                                    type: f.z,
-                                    model: f.n
-                                },
-                                {
-                                    x: 0,
-                                    y: 0,
-                                    type: f.A,
-                                    model: f.h
-                                },
-                                {
-                                    x: 1,
-                                    y: 0,
-                                    type: f.w,
-                                    model: f.j
-                                },
-                                {
-                                    x: 2,
-                                    y: 0,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: 3
-                                },
+                                }, // Buffer turn
                                 {
                                     x: 2,
                                     y: 1,
                                     type: f.y,
                                     model: f.l,
                                     math: 1
-                                },
+                                }, // -1
                                 {
-                                    x: 2,
-                                    y: 2,
+                                    x: 1,
+                                    y: 1,
                                     type: f.x,
                                     model: f.k,
-                                    math: 1
-                                },
+                                    math: 0
+                                }, // Barrier = 0
                                 {
-                                    x: 2,
-                                    y: 3,
+                                    x: 0,
+                                    y: 1,
                                     type: f.u,
                                     model: f.q
                                 }
                             ],
                             commands: [p.c, p.b, p.f, p.e, p.d],
-                            maxCommands: 10
+                            maxCommands: 8
                         },
 
-                        // Level 5: "Большие шаги". Набрать 5, пройти, набрать 10.
-                        // Path: Start -> +1 -> Barrier(=5) -> +1 -> Barrier(=10) -> End
+                        // Level 5: "Квадратный путь". Набрать 2, лево, лево, набрать 4.
+                        // Безопасен (есть угловой f.v).
                         {
                             completed: !1,
                             finished: !1,
@@ -5743,142 +5774,160 @@
                                     y: 0,
                                     type: f.w,
                                     model: f.j
+                                }, // +1
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 2
+                                }, // Barrier = 2
+                                {
+                                    x: 2,
+                                    y: 1,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Empty
+                                {
+                                    x: 1,
+                                    y: 1,
+                                    type: f.w,
+                                    model: f.j
+                                }, // +1
+                                {
+                                    x: 0,
+                                    y: 1,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 4
+                                }, // Barrier = 4
+                                {
+                                    x: 0,
+                                    y: 2,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 8
+                        },
+
+                        // Level 6: "Змейка вверх". -2, право, 0.
+                        // Исправление: Добавлен буфер после барьера.
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
                                 },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 0,
+                                    y: 1,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                }, // -1
+                                {
+                                    x: 0,
+                                    y: 2,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: -2
+                                }, // Barrier = -2
+                                {
+                                    x: 1,
+                                    y: 2,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Empty Buffer
+                                {
+                                    x: 2,
+                                    y: 2,
+                                    type: f.w,
+                                    model: f.j
+                                }, // +1
+                                {
+                                    x: 3,
+                                    y: 2,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 0
+                                }, // Barrier = 0
+                                {
+                                    x: 4,
+                                    y: 2,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 8
+                        },
+
+                        // Level 7: "Длинный коридор". Набрать 5, разворот, сбросить до 2.
+                        // Безопасен (есть f.v в кармане).
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                }, // +1
                                 {
                                     x: 2,
                                     y: 0,
                                     type: f.x,
                                     model: f.k,
                                     math: 5
-                                },
+                                }, // Barrier = 5
                                 {
                                     x: 3,
                                     y: 0,
-                                    type: f.w,
-                                    model: f.j
-                                },
-                                {
-                                    x: 4,
-                                    y: 0,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: 10
-                                },
-                                {
-                                    x: 5,
-                                    y: 0,
-                                    type: f.u,
-                                    model: f.q
-                                }
-                            ],
-                            commands: [p.c, p.b, p.f, p.e, p.d],
-                            maxCommands: 8
-                        },
-
-                        // Level 6: "Зиг-заг". -2, поворот, 0.
-                        // Path: Start -> -1 -> Barrier(=-2) -> (Turn) -> +1 -> Barrier(=0) -> End
-                        {
-                            completed: !1,
-                            finished: !1,
-                            attempts: 0,
-                            tiles: [{
-                                    x: -1,
-                                    y: 0,
-                                    type: f.z,
-                                    model: f.n
-                                },
-                                {
-                                    x: 0,
-                                    y: 0,
-                                    type: f.A,
+                                    type: f.v,
                                     model: f.h
-                                },
-                                {
-                                    x: 1,
-                                    y: 0,
-                                    type: f.y,
-                                    model: f.l,
-                                    math: 1
-                                },
-                                {
-                                    x: 2,
-                                    y: 0,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: -2
-                                },
-                                {
-                                    x: 2,
-                                    y: -1,
-                                    type: f.w,
-                                    model: f.j
-                                },
-                                {
-                                    x: 2,
-                                    y: -2,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: 0
-                                },
-                                {
-                                    x: 2,
-                                    y: -3,
-                                    type: f.u,
-                                    model: f.q
-                                }
-                            ],
-                            commands: [p.c, p.b, p.f, p.e, p.d],
-                            maxCommands: 10
-                        },
-
-                        // Level 7: "Качели". Набрать 4, пройти, сбросить до 2.
-                        // Path: Start -> +1 -> Barrier(=4) -> -1 -> Barrier(=2) -> End
-                        {
-                            completed: !1,
-                            finished: !1,
-                            attempts: 0,
-                            tiles: [{
-                                    x: -1,
-                                    y: 0,
-                                    type: f.z,
-                                    model: f.n
-                                },
-                                {
-                                    x: 0,
-                                    y: 0,
-                                    type: f.A,
-                                    model: f.h
-                                },
-                                {
-                                    x: 1,
-                                    y: 0,
-                                    type: f.w,
-                                    model: f.j
-                                },
-                                {
-                                    x: 2,
-                                    y: 0,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: 4
-                                },
+                                }, // Buffer
                                 {
                                     x: 3,
-                                    y: 0,
+                                    y: 1,
                                     type: f.y,
                                     model: f.l,
                                     math: 1
-                                },
+                                }, // -1
                                 {
-                                    x: 4,
-                                    y: 0,
+                                    x: 3,
+                                    y: 2,
                                     type: f.x,
                                     model: f.k,
                                     math: 2
-                                },
+                                }, // Barrier = 2
                                 {
-                                    x: 5,
-                                    y: 0,
+                                    x: 3,
+                                    y: 3,
                                     type: f.u,
                                     model: f.q
                                 }
@@ -5887,8 +5936,8 @@
                             maxCommands: 8
                         },
 
-                        // Level 8: "Обратный ход". Сбросить до -3, пройти, сбросить до -6.
-                        // Path: Start -> -1 -> Barrier(=-3) -> -1 -> Barrier(=-6) -> End
+                        // Level 8: "Спуск". -3, лево, -6.
+                        // Исправление: Добавлен буфер.
                         {
                             completed: !1,
                             finished: !1,
@@ -5911,31 +5960,37 @@
                                     type: f.y,
                                     model: f.l,
                                     math: 1
-                                },
+                                }, // -1
                                 {
                                     x: 2,
                                     y: 0,
                                     type: f.x,
                                     model: f.k,
                                     math: -3
-                                },
+                                }, // Barrier = -3
                                 {
-                                    x: 3,
-                                    y: 0,
+                                    x: 2,
+                                    y: 1,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Buffer
+                                {
+                                    x: 2,
+                                    y: 2,
                                     type: f.y,
                                     model: f.l,
                                     math: 1
-                                },
+                                }, // -1
                                 {
-                                    x: 4,
-                                    y: 0,
+                                    x: 2,
+                                    y: 3,
                                     type: f.x,
                                     model: f.k,
                                     math: -6
-                                },
+                                }, // Barrier = -6
                                 {
-                                    x: 5,
-                                    y: 0,
+                                    x: 2,
+                                    y: 4,
                                     type: f.u,
                                     model: f.q
                                 }
@@ -5944,8 +5999,8 @@
                             maxCommands: 8
                         },
 
-                        // Level 9: "Угол". Набрать 3, угол, сбросить до 2.
-                        // Path: Start -> +1 -> Barrier(=3) -> (Turn) -> -1 -> Barrier(=2) -> End
+                        // Level 9: "Восьмерка". 2, право, 0.
+                        // Исправление: Добавлен буфер.
                         {
                             completed: !1,
                             finished: !1,
@@ -5967,41 +6022,47 @@
                                     y: 0,
                                     type: f.w,
                                     model: f.j
-                                },
+                                }, // +1
                                 {
                                     x: 2,
                                     y: 0,
                                     type: f.x,
                                     model: f.k,
-                                    math: 3
-                                },
+                                    math: 2
+                                }, // Barrier = 2
                                 {
                                     x: 2,
                                     y: -1,
-                                    type: f.y,
-                                    model: f.l,
-                                    math: 1
-                                },
+                                    type: f.v,
+                                    model: f.h
+                                }, // Buffer
                                 {
                                     x: 2,
                                     y: -2,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                }, // -1
+                                {
+                                    x: 1,
+                                    y: -2,
                                     type: f.x,
                                     model: f.k,
-                                    math: 2
-                                },
+                                    math: 0
+                                }, // Barrier = 0
                                 {
-                                    x: 3,
+                                    x: 0,
                                     y: -2,
                                     type: f.u,
                                     model: f.q
                                 }
                             ],
                             commands: [p.c, p.b, p.f, p.e, p.d],
-                            maxCommands: 10
+                            maxCommands: 8
                         },
 
-                        // Level 10: "Финал разминки". Набрать 2, пройти, набрать 5.
-                        // Path: Start -> +1 -> Barrier(=2) -> +1 -> Barrier(=5) -> End
+                        // Level 10: "Плюс-Минус". 4, лево, 2.
+                        // Исправление: Добавлен буфер (тот самый уровень, о котором вы говорили).
                         {
                             completed: !1,
                             finished: !1,
@@ -6023,30 +6084,359 @@
                                     y: 1,
                                     type: f.w,
                                     model: f.j
-                                },
+                                }, // +1
                                 {
                                     x: 0,
                                     y: 2,
                                     type: f.x,
                                     model: f.k,
+                                    math: 4
+                                }, // Barrier = 4
+                                {
+                                    x: 1,
+                                    y: 2,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Buffer (Safe spot to step back)
+                                {
+                                    x: 2,
+                                    y: 2,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                }, // -1
+                                {
+                                    x: 3,
+                                    y: 2,
+                                    type: f.x,
+                                    model: f.k,
                                     math: 2
+                                }, // Barrier = 2
+                                {
+                                    x: 4,
+                                    y: 2,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 8
+                        },
+                        // Level 11: "Лесенка". 2 -> 4 -> 6.
+                        // Исправление: Добавлены буферы между каждым барьером и плюсом.
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
                                 },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                }, // +1
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 2
+                                }, // B=2
+                                {
+                                    x: 2,
+                                    y: 1,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Buffer
+                                {
+                                    x: 2,
+                                    y: 2,
+                                    type: f.w,
+                                    model: f.j
+                                }, // +1
+                                {
+                                    x: 2,
+                                    y: 3,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 4
+                                }, // B=4
+                                {
+                                    x: 3,
+                                    y: 3,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Buffer
+                                {
+                                    x: 4,
+                                    y: 3,
+                                    type: f.w,
+                                    model: f.j
+                                }, // +1
+                                {
+                                    x: 5,
+                                    y: 3,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 6
+                                }, // B=6
+                                {
+                                    x: 6,
+                                    y: 3,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 8
+                        },
+
+                        // Level 12: "Спираль". 2 -> 4 -> 6.
+                        // Исправление: Буферы на углах.
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                }, // +1
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 2
+                                }, // B=2
+                                {
+                                    x: 3,
+                                    y: 0,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Buffer
+                                {
+                                    x: 3,
+                                    y: -1,
+                                    type: f.w,
+                                    model: f.j
+                                }, // +1
+                                {
+                                    x: 3,
+                                    y: -2,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 4
+                                }, // B=4
+                                {
+                                    x: 2,
+                                    y: -2,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Buffer
+                                {
+                                    x: 1,
+                                    y: -2,
+                                    type: f.w,
+                                    model: f.j
+                                }, // +1
+                                {
+                                    x: 0,
+                                    y: -2,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 6
+                                }, // B=6
+                                {
+                                    x: -1,
+                                    y: -2,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 8
+                        },
+
+                        // Level 13: "Волна". 3 -> 0 -> 3.
+                        // Исправление: Буферы.
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                }, // +1
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 3
+                                }, // B=3
+                                {
+                                    x: 2,
+                                    y: -1,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Buffer
+                                {
+                                    x: 2,
+                                    y: -2,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                }, // -1
+                                {
+                                    x: 2,
+                                    y: -3,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 0
+                                }, // B=0
+                                {
+                                    x: 3,
+                                    y: -3,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Buffer
+                                {
+                                    x: 4,
+                                    y: -3,
+                                    type: f.w,
+                                    model: f.j
+                                }, // +1
+                                {
+                                    x: 5,
+                                    y: -3,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 3
+                                }, // B=3
+                                {
+                                    x: 6,
+                                    y: -3,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 8
+                        },
+
+                        // Level 14: "Отрицательная петля". -2 -> -4 -> -2.
+                        // Исправление: Буферы.
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                }, // -1
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: -2
+                                }, // B=-2
+                                {
+                                    x: 2,
+                                    y: 1,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Buffer
+                                {
+                                    x: 2,
+                                    y: 2,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                }, // -1
+                                {
+                                    x: 2,
+                                    y: 3,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: -4
+                                }, // B=-4
+                                {
+                                    x: 1,
+                                    y: 3,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Buffer
                                 {
                                     x: 0,
                                     y: 3,
                                     type: f.w,
                                     model: f.j
-                                },
+                                }, // +1
                                 {
-                                    x: 0,
-                                    y: 4,
+                                    x: -1,
+                                    y: 3,
                                     type: f.x,
                                     model: f.k,
-                                    math: 5
-                                },
+                                    math: -2
+                                }, // B=-2
                                 {
-                                    x: 0,
-                                    y: 5,
+                                    x: -2,
+                                    y: 3,
                                     type: f.u,
                                     model: f.q
                                 }
@@ -6054,8 +6444,9 @@
                             commands: [p.c, p.b, p.f, p.e, p.d],
                             maxCommands: 8
                         },
-                        // Level 11: "Три шага". 2 -> 4 -> 6.
-                        // Path: Start -> +1 -> R(=2) -> +1 -> R(=4) -> +1 -> R(=6) -> End
+
+                        // Level 15: "Зигзаг широкий". 2 -> 4 -> 6.
+                        // Исправление: Буферы.
                         {
                             completed: !1,
                             finished: !1,
@@ -6073,57 +6464,69 @@
                                     model: f.h
                                 },
                                 {
-                                    x: 1,
-                                    y: 0,
+                                    x: 0,
+                                    y: 1,
                                     type: f.w,
                                     model: f.j
-                                },
+                                }, // +1
                                 {
-                                    x: 2,
-                                    y: 0,
+                                    x: 0,
+                                    y: 2,
                                     type: f.x,
                                     model: f.k,
                                     math: 2
-                                },
+                                }, // B=2
                                 {
-                                    x: 3,
-                                    y: 0,
+                                    x: 1,
+                                    y: 2,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Buffer
+                                {
+                                    x: 2,
+                                    y: 2,
                                     type: f.w,
                                     model: f.j
-                                },
+                                }, // +1
                                 {
-                                    x: 4,
-                                    y: 0,
+                                    x: 3,
+                                    y: 2,
                                     type: f.x,
                                     model: f.k,
                                     math: 4
-                                },
+                                }, // B=4
                                 {
-                                    x: 5,
-                                    y: 0,
+                                    x: 3,
+                                    y: 3,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Buffer
+                                {
+                                    x: 3,
+                                    y: 4,
                                     type: f.w,
                                     model: f.j
-                                },
+                                }, // +1
                                 {
-                                    x: 6,
-                                    y: 0,
+                                    x: 3,
+                                    y: 5,
                                     type: f.x,
                                     model: f.k,
                                     math: 6
-                                },
+                                }, // B=6
                                 {
-                                    x: 7,
-                                    y: 0,
+                                    x: 3,
+                                    y: 6,
                                     type: f.u,
                                     model: f.q
                                 }
                             ],
                             commands: [p.c, p.b, p.f, p.e, p.d],
-                            maxCommands: 10
+                            maxCommands: 8
                         },
 
-                        // Level 12: "Волна". 3 -> 0 -> 3.
-                        // Path: Start -> +1 -> R(=3) -> -1 -> R(=0) -> +1 -> R(=3) -> End
+                        // Level 16: "U-Turn". 3 -> 0 -> 3.
+                        // Исправление: Буферы.
                         {
                             completed: !1,
                             finished: !1,
@@ -6145,54 +6548,66 @@
                                     y: 0,
                                     type: f.w,
                                     model: f.j
-                                },
+                                }, // +1
                                 {
                                     x: 2,
                                     y: 0,
                                     type: f.x,
                                     model: f.k,
                                     math: 3
-                                },
+                                }, // B=3
                                 {
                                     x: 3,
                                     y: 0,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Buffer
+                                {
+                                    x: 3,
+                                    y: 1,
                                     type: f.y,
                                     model: f.l,
                                     math: 1
-                                },
+                                }, // -1
                                 {
-                                    x: 4,
-                                    y: 0,
+                                    x: 3,
+                                    y: 2,
                                     type: f.x,
                                     model: f.k,
                                     math: 0
-                                },
+                                }, // B=0
                                 {
-                                    x: 5,
-                                    y: 0,
+                                    x: 2,
+                                    y: 2,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Buffer
+                                {
+                                    x: 1,
+                                    y: 2,
                                     type: f.w,
                                     model: f.j
-                                },
+                                }, // +1
                                 {
-                                    x: 6,
-                                    y: 0,
+                                    x: 0,
+                                    y: 2,
                                     type: f.x,
                                     model: f.k,
                                     math: 3
-                                },
+                                }, // B=3
                                 {
-                                    x: 7,
-                                    y: 0,
+                                    x: -1,
+                                    y: 2,
                                     type: f.u,
                                     model: f.q
                                 }
                             ],
                             commands: [p.c, p.b, p.f, p.e, p.d],
-                            maxCommands: 10
+                            maxCommands: 8
                         },
 
-                        // Level 13: "Глубокое погружение". -2 -> -4 -> -2.
-                        // Path: Start -> -1 -> R(=-2) -> -1 -> R(=-4) -> +1 -> R(=-2) -> End
+                        // Level 17: "Квадрат внутрь". -2 -> -4 -> -6.
+                        // Исправление: Буферы.
                         {
                             completed: !1,
                             finished: !1,
@@ -6215,54 +6630,67 @@
                                     type: f.y,
                                     model: f.l,
                                     math: 1
-                                },
+                                }, // -1
                                 {
                                     x: 2,
                                     y: 0,
                                     type: f.x,
                                     model: f.k,
                                     math: -2
-                                },
+                                }, // B=-2
                                 {
-                                    x: 3,
-                                    y: 0,
+                                    x: 2,
+                                    y: -1,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Buffer
+                                {
+                                    x: 2,
+                                    y: -2,
                                     type: f.y,
                                     model: f.l,
                                     math: 1
-                                },
+                                }, // -1
                                 {
-                                    x: 4,
-                                    y: 0,
+                                    x: 2,
+                                    y: -3,
                                     type: f.x,
                                     model: f.k,
                                     math: -4
-                                },
+                                }, // B=-4
                                 {
-                                    x: 5,
-                                    y: 0,
-                                    type: f.w,
-                                    model: f.j
-                                },
+                                    x: 1,
+                                    y: -3,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Buffer
                                 {
-                                    x: 6,
-                                    y: 0,
+                                    x: 0,
+                                    y: -3,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                }, // -1
+                                {
+                                    x: -1,
+                                    y: -3,
                                     type: f.x,
                                     model: f.k,
-                                    math: -2
-                                },
+                                    math: -6
+                                }, // B=-6
                                 {
-                                    x: 7,
-                                    y: 0,
+                                    x: -2,
+                                    y: -3,
                                     type: f.u,
                                     model: f.q
                                 }
                             ],
                             commands: [p.c, p.b, p.f, p.e, p.d],
-                            maxCommands: 10
+                            maxCommands: 8
                         },
 
-                        // Level 14: "Лестница". 2, поворот, 4, поворот, 6.
-                        // Path: Start -> +1 -> R(=2) -> (Up) -> +1 -> R(=4) -> (Right) -> +1 -> R(=6) -> End
+                        // Level 18: "Три поворота". 2 -> 4 -> 2.
+                        // Исправление: Буферы.
                         {
                             completed: !1,
                             finished: !1,
@@ -6280,57 +6708,70 @@
                                     model: f.h
                                 },
                                 {
-                                    x: 1,
-                                    y: 0,
-                                    type: f.w,
-                                    model: f.j
-                                },
-                                {
-                                    x: 2,
-                                    y: 0,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: 2
-                                },
-                                {
-                                    x: 2,
+                                    x: 0,
                                     y: 1,
                                     type: f.w,
                                     model: f.j
-                                },
+                                }, // +1
+                                {
+                                    x: 0,
+                                    y: 2,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 2
+                                }, // B=2
+                                {
+                                    x: 1,
+                                    y: 2,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Buffer
                                 {
                                     x: 2,
+                                    y: 2,
+                                    type: f.w,
+                                    model: f.j
+                                }, // +1
+                                {
+                                    x: 3,
                                     y: 2,
                                     type: f.x,
                                     model: f.k,
                                     math: 4
-                                },
+                                }, // B=4
                                 {
                                     x: 3,
-                                    y: 2,
-                                    type: f.w,
-                                    model: f.j
-                                },
+                                    y: 1,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Buffer
                                 {
-                                    x: 4,
-                                    y: 2,
+                                    x: 3,
+                                    y: 0,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                }, // -1
+                                {
+                                    x: 3,
+                                    y: -1,
                                     type: f.x,
                                     model: f.k,
-                                    math: 6
-                                },
+                                    math: 2
+                                }, // B=2
                                 {
-                                    x: 5,
-                                    y: 2,
+                                    x: 3,
+                                    y: -2,
                                     type: f.u,
                                     model: f.q
                                 }
                             ],
                             commands: [p.c, p.b, p.f, p.e, p.d],
-                            maxCommands: 12
+                            maxCommands: 8
                         },
 
-                        // Level 15: "Сложная арифметика". 3 -> 1 -> 4.
-                        // Path: Start -> +1 -> R(=3) -> -1 -> R(=1) -> +1 -> R(=4) -> End
+                        // Level 19: "Плюс-Минус-Плюс". 3 -> 1 -> 4.
+                        // Исправление: Буферы.
                         {
                             completed: !1,
                             finished: !1,
@@ -6352,261 +6793,66 @@
                                     y: 0,
                                     type: f.w,
                                     model: f.j
-                                },
+                                }, // +1
                                 {
                                     x: 2,
                                     y: 0,
                                     type: f.x,
                                     model: f.k,
                                     math: 3
-                                },
-                                {
-                                    x: 3,
-                                    y: 0,
-                                    type: f.y,
-                                    model: f.l,
-                                    math: 1
-                                },
-                                {
-                                    x: 4,
-                                    y: 0,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: 1
-                                },
-                                {
-                                    x: 5,
-                                    y: 0,
-                                    type: f.w,
-                                    model: f.j
-                                },
-                                {
-                                    x: 6,
-                                    y: 0,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: 4
-                                },
-                                {
-                                    x: 7,
-                                    y: 0,
-                                    type: f.u,
-                                    model: f.q
-                                }
-                            ],
-                            commands: [p.c, p.b, p.f, p.e, p.d],
-                            maxCommands: 10
-                        },
-
-                        // Level 16: "Змейка". -2 -> 0 -> 2.
-                        // Path: Start -> -1 -> R(=-2) -> +1 -> R(=0) -> +1 -> R(=2) -> End
-                        {
-                            completed: !1,
-                            finished: !1,
-                            attempts: 0,
-                            tiles: [{
-                                    x: -1,
-                                    y: 0,
-                                    type: f.z,
-                                    model: f.n
-                                },
-                                {
-                                    x: 0,
-                                    y: 0,
-                                    type: f.A,
-                                    model: f.h
-                                },
-                                {
-                                    x: 1,
-                                    y: 0,
-                                    type: f.y,
-                                    model: f.l,
-                                    math: 1
-                                },
-                                {
-                                    x: 2,
-                                    y: 0,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: -2
-                                },
-                                {
-                                    x: 3,
-                                    y: 0,
-                                    type: f.w,
-                                    model: f.j
-                                },
-                                {
-                                    x: 4,
-                                    y: 0,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: 0
-                                },
-                                {
-                                    x: 5,
-                                    y: 0,
-                                    type: f.w,
-                                    model: f.j
-                                },
-                                {
-                                    x: 6,
-                                    y: 0,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: 2
-                                },
-                                {
-                                    x: 7,
-                                    y: 0,
-                                    type: f.u,
-                                    model: f.q
-                                }
-                            ],
-                            commands: [p.c, p.b, p.f, p.e, p.d],
-                            maxCommands: 10
-                        },
-
-                        // Level 17: "Вниз по спирали". 2 -> 1 -> 0.
-                        // Path: Start -> +1 -> R(=2) -> (Turn) -> -1 -> R(=1) -> (Turn) -> -1 -> R(=0) -> End
-                        {
-                            completed: !1,
-                            finished: !1,
-                            attempts: 0,
-                            tiles: [{
-                                    x: -1,
-                                    y: 0,
-                                    type: f.z,
-                                    model: f.n
-                                },
-                                {
-                                    x: 0,
-                                    y: 0,
-                                    type: f.A,
-                                    model: f.h
-                                },
-                                {
-                                    x: 1,
-                                    y: 0,
-                                    type: f.w,
-                                    model: f.j
-                                },
-                                {
-                                    x: 2,
-                                    y: 0,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: 2
-                                },
+                                }, // B=3
                                 {
                                     x: 2,
                                     y: 1,
-                                    type: f.y,
-                                    model: f.l,
-                                    math: 1
-                                },
+                                    type: f.v,
+                                    model: f.h
+                                }, // Buffer
                                 {
                                     x: 2,
                                     y: 2,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: 1
-                                },
-                                {
-                                    x: 1,
-                                    y: 2,
                                     type: f.y,
                                     model: f.l,
                                     math: 1
-                                },
+                                }, // -1
                                 {
-                                    x: 0,
-                                    y: 2,
+                                    x: 2,
+                                    y: 3,
                                     type: f.x,
                                     model: f.k,
-                                    math: 0
-                                },
+                                    math: 1
+                                }, // B=1
                                 {
-                                    x: -1,
-                                    y: 2,
-                                    type: f.u,
-                                    model: f.q
-                                }
-                            ],
-                            commands: [p.c, p.b, p.f, p.e, p.d],
-                            maxCommands: 14
-                        },
-
-                        // Level 18: "Набор высоты". 4 -> 8 -> 12.
-                        // Path: Start -> +1 -> R(=4) -> +1 -> R(=8) -> +1 -> R(=12) -> End
-                        {
-                            completed: !1,
-                            finished: !1,
-                            attempts: 0,
-                            tiles: [{
-                                    x: -1,
-                                    y: 0,
-                                    type: f.z,
-                                    model: f.n
-                                },
-                                {
-                                    x: 0,
-                                    y: 0,
-                                    type: f.A,
+                                    x: 3,
+                                    y: 3,
+                                    type: f.v,
                                     model: f.h
-                                },
+                                }, // Buffer
                                 {
-                                    x: 1,
-                                    y: 0,
+                                    x: 4,
+                                    y: 3,
                                     type: f.w,
                                     model: f.j
-                                },
+                                }, // +1
                                 {
-                                    x: 2,
-                                    y: 0,
+                                    x: 5,
+                                    y: 3,
                                     type: f.x,
                                     model: f.k,
                                     math: 4
-                                },
-                                {
-                                    x: 3,
-                                    y: 0,
-                                    type: f.w,
-                                    model: f.j
-                                },
-                                {
-                                    x: 4,
-                                    y: 0,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: 8
-                                },
-                                {
-                                    x: 5,
-                                    y: 0,
-                                    type: f.w,
-                                    model: f.j
-                                },
+                                }, // B=4
                                 {
                                     x: 6,
-                                    y: 0,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: 12
-                                },
-                                {
-                                    x: 7,
-                                    y: 0,
+                                    y: 3,
                                     type: f.u,
                                     model: f.q
                                 }
                             ],
                             commands: [p.c, p.b, p.f, p.e, p.d],
-                            maxCommands: 10
+                            maxCommands: 8
                         },
 
-                        // Level 19: "Туда-сюда". 3 -> 0 -> 3.
-                        // Path: Start -> +1 -> R(=3) -> -1 -> R(=0) -> +1 -> R(=3) -> End
+                        // Level 20: "Финал". 5 -> 10 -> 5.
+                        // Исправление: Буферы.
                         {
                             completed: !1,
                             finished: !1,
@@ -6624,123 +6870,66 @@
                                     model: f.h
                                 },
                                 {
-                                    x: 1,
-                                    y: 0,
+                                    x: 0,
+                                    y: -1,
                                     type: f.w,
                                     model: f.j
-                                },
-                                {
-                                    x: 2,
-                                    y: 0,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: 3
-                                },
-                                {
-                                    x: 3,
-                                    y: 0,
-                                    type: f.y,
-                                    model: f.l,
-                                    math: 1
-                                },
-                                {
-                                    x: 4,
-                                    y: 0,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: 0
-                                },
-                                {
-                                    x: 5,
-                                    y: 0,
-                                    type: f.w,
-                                    model: f.j
-                                },
-                                {
-                                    x: 6,
-                                    y: 0,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: 3
-                                },
-                                {
-                                    x: 7,
-                                    y: 0,
-                                    type: f.u,
-                                    model: f.q
-                                }
-                            ],
-                            commands: [p.c, p.b, p.f, p.e, p.d],
-                            maxCommands: 10
-                        },
-
-                        // Level 20: "Финальный марафон". 5 -> 2 -> 6.
-                        // Path: Start -> +1 -> R(=5) -> -1 -> R(=2) -> +1 -> R(=6) -> End
-                        {
-                            completed: !1,
-                            finished: !1,
-                            attempts: 0,
-                            tiles: [{
-                                    x: -1,
-                                    y: 0,
-                                    type: f.z,
-                                    model: f.n
-                                },
+                                }, // +1
                                 {
                                     x: 0,
-                                    y: 0,
-                                    type: f.A,
-                                    model: f.h
-                                },
-                                {
-                                    x: 1,
-                                    y: 0,
-                                    type: f.w,
-                                    model: f.j
-                                },
-                                {
-                                    x: 2,
-                                    y: 0,
+                                    y: -2,
                                     type: f.x,
                                     model: f.k,
                                     math: 5
-                                },
+                                }, // B=5
+                                {
+                                    x: 1,
+                                    y: -2,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Buffer
+                                {
+                                    x: 2,
+                                    y: -2,
+                                    type: f.w,
+                                    model: f.j
+                                }, // +1
+                                {
+                                    x: 3,
+                                    y: -2,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 10
+                                }, // B=10
+                                {
+                                    x: 3,
+                                    y: -1,
+                                    type: f.v,
+                                    model: f.h
+                                }, // Buffer
                                 {
                                     x: 3,
                                     y: 0,
                                     type: f.y,
                                     model: f.l,
                                     math: 1
-                                },
+                                }, // -1
                                 {
-                                    x: 4,
-                                    y: 0,
+                                    x: 3,
+                                    y: 1,
                                     type: f.x,
                                     model: f.k,
-                                    math: 2
-                                },
+                                    math: 5
+                                }, // B=5
                                 {
-                                    x: 5,
-                                    y: 0,
-                                    type: f.w,
-                                    model: f.j
-                                },
-                                {
-                                    x: 6,
-                                    y: 0,
-                                    type: f.x,
-                                    model: f.k,
-                                    math: 6
-                                },
-                                {
-                                    x: 7,
-                                    y: 0,
+                                    x: 3,
+                                    y: 2,
                                     type: f.u,
                                     model: f.q
                                 }
                             ],
                             commands: [p.c, p.b, p.f, p.e, p.d],
-                            maxCommands: 10
+                            maxCommands: 8
                         }
                     ]
                 },
