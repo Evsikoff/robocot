@@ -3481,7 +3481,7 @@
                                 }
                             }, parseInt(t) + 1, ".", parseInt(n) + 1))
                         })
-                    })), n[n.length - 1].levels.length > 0 && o.a.createElement("p", null, "Dine Brett"), o.a.createElement("ol", null, n[n.length - 1].levels.map(function(e, t) {
+                    })), n[n.length - 1].levels.length > 0 && null, o.a.createElement("ol", null, n[n.length - 1].levels.map(function(e, t) {
                         var n;
                         return o.a.createElement("li", {
                             className: L()(Pa.a["group" + p], (n = {}, n[Pa.a.complete] = u[p] && -1 !== u[p].indexOf(t), n)),
