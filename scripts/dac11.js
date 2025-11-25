@@ -5291,212 +5291,1458 @@
                         seen: !1
                     },
                     levels: [{
-                        completed: !1,
-                        finished: !1,
-                        attempts: 0,
-                        tiles: [{
-                            x: -1,
-                            y: 0,
-                            type: f.z,
-                            model: f.n
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                x: -1,
+                                y: 0,
+                                type: f.z,
+                                model: f.n
+                            }, {
+                                x: 0,
+                                y: 0,
+                                type: f.A,
+                                model: f.h
+                            }, {
+                                x: 1,
+                                y: 0,
+                                type: f.w,
+                                model: f.j
+                            }, {
+                                x: 2,
+                                y: 0,
+                                type: f.x,
+                                model: f.k,
+                                math: 1
+                            }, {
+                                x: 3,
+                                y: 0,
+                                type: f.u,
+                                model: f.q
+                            }],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 8
                         }, {
-                            x: 0,
-                            y: 0,
-                            type: f.A,
-                            model: f.h
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                x: -1,
+                                y: 0,
+                                type: f.z,
+                                model: f.n
+                            }, {
+                                x: 0,
+                                y: 0,
+                                type: f.A,
+                                model: f.h
+                            }, {
+                                x: 1,
+                                y: 0,
+                                type: f.w,
+                                model: f.j
+                            }, {
+                                x: 2,
+                                y: 0,
+                                type: f.y,
+                                model: f.l,
+                                math: 1
+                            }, {
+                                x: 2,
+                                y: 1,
+                                type: f.x,
+                                model: f.k,
+                                math: 0
+                            }, {
+                                x: 2,
+                                y: 2,
+                                type: f.u,
+                                model: f.q
+                            }],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 8
                         }, {
-                            x: 1,
-                            y: 0,
-                            type: f.w,
-                            model: f.j
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                x: -1,
+                                y: 0,
+                                type: f.z,
+                                model: f.n
+                            }, {
+                                x: 0,
+                                y: 0,
+                                type: f.A,
+                                model: f.h
+                            }, {
+                                x: 0,
+                                y: 1,
+                                type: f.y,
+                                model: f.l
+                            }, {
+                                x: 1,
+                                y: 0,
+                                type: f.w,
+                                model: f.j
+                            }, {
+                                x: 1,
+                                y: 1,
+                                type: f.x,
+                                model: f.k,
+                                math: -1
+                            }, {
+                                x: 1,
+                                y: 2,
+                                type: f.u,
+                                model: f.q
+                            }],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 8
                         }, {
-                            x: 2,
-                            y: 0,
-                            type: f.x,
-                            model: f.k,
-                            math: 1
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                x: 0,
+                                y: -1,
+                                type: f.v,
+                                model: f.h
+                            }, {
+                                x: 0,
+                                y: 0,
+                                type: f.A,
+                                model: f.h
+                            }, {
+                                x: 0,
+                                y: 1,
+                                type: f.z,
+                                model: f.n
+                            }, {
+                                x: 1,
+                                y: -1,
+                                type: f.w,
+                                model: f.j
+                            }, {
+                                x: 1,
+                                y: 0,
+                                type: f.v,
+                                model: f.h
+                            }, {
+                                x: 2,
+                                y: 0,
+                                type: f.x,
+                                model: f.k,
+                                math: 2
+                            }, {
+                                x: 3,
+                                y: 0,
+                                type: f.u,
+                                model: f.q
+                            }],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 5
                         }, {
-                            x: 3,
-                            y: 0,
-                            type: f.u,
-                            model: f.q
-                        }],
-                        commands: [p.c, p.b, p.f, p.e, p.d],
-                        maxCommands: 8
-                    }, {
-                        completed: !1,
-                        finished: !1,
-                        attempts: 0,
-                        tiles: [{
-                            x: -1,
-                            y: 0,
-                            type: f.z,
-                            model: f.n
-                        }, {
-                            x: 0,
-                            y: 0,
-                            type: f.A,
-                            model: f.h
-                        }, {
-                            x: 1,
-                            y: 0,
-                            type: f.w,
-                            model: f.j
-                        }, {
-                            x: 2,
-                            y: 0,
-                            type: f.y,
-                            model: f.l,
-                            math: 1
-                        }, {
-                            x: 2,
-                            y: 1,
-                            type: f.x,
-                            model: f.k,
-                            math: 0
-                        }, {
-                            x: 2,
-                            y: 2,
-                            type: f.u,
-                            model: f.q
-                        }],
-                        commands: [p.c, p.b, p.f, p.e, p.d],
-                        maxCommands: 8
-                    }, {
-                        completed: !1,
-                        finished: !1,
-                        attempts: 0,
-                        tiles: [{
-                            x: -1,
-                            y: 0,
-                            type: f.z,
-                            model: f.n
-                        }, {
-                            x: 0,
-                            y: 0,
-                            type: f.A,
-                            model: f.h
-                        }, {
-                            x: 0,
-                            y: 1,
-                            type: f.y,
-                            model: f.l
-                        }, {
-                            x: 1,
-                            y: 0,
-                            type: f.w,
-                            model: f.j
-                        }, {
-                            x: 1,
-                            y: 1,
-                            type: f.x,
-                            model: f.k,
-                            math: -1
-                        }, {
-                            x: 1,
-                            y: 2,
-                            type: f.u,
-                            model: f.q
-                        }],
-                        commands: [p.c, p.b, p.f, p.e, p.d],
-                        maxCommands: 8
-                    }, {
-                        completed: !1,
-                        finished: !1,
-                        attempts: 0,
-                        tiles: [{
-                            x: 0,
-                            y: -1,
-                            type: f.v,
-                            model: f.h
-                        }, {
-                            x: 0,
-                            y: 0,
-                            type: f.A,
-                            model: f.h
-                        }, {
-                            x: 0,
-                            y: 1,
-                            type: f.z,
-                            model: f.n
-                        }, {
-                            x: 1,
-                            y: -1,
-                            type: f.w,
-                            model: f.j
-                        }, {
-                            x: 1,
-                            y: 0,
-                            type: f.v,
-                            model: f.h
-                        }, {
-                            x: 2,
-                            y: 0,
-                            type: f.x,
-                            model: f.k,
-                            math: 2
-                        }, {
-                            x: 3,
-                            y: 0,
-                            type: f.u,
-                            model: f.q
-                        }],
-                        commands: [p.c, p.b, p.f, p.e, p.d],
-                        maxCommands: 5
-                    }, {
-                        completed: !1,
-                        finished: !1,
-                        attempts: 0,
-                        tiles: [{
-                            x: -1,
-                            y: 0,
-                            type: f.z,
-                            model: f.n
-                        }, {
-                            x: -1,
-                            y: 2,
-                            type: f.u,
-                            model: f.q
-                        }, {
-                            x: 0,
-                            y: 0,
-                            type: f.A,
-                            model: f.h
-                        }, {
-                            x: 0,
-                            y: 2,
-                            type: f.x,
-                            model: f.k,
-                            math: 1
-                        }, {
-                            x: 1,
-                            y: 0,
-                            type: f.y,
-                            model: f.l
-                        }, {
-                            x: 1,
-                            y: 1,
-                            type: f.w,
-                            model: f.j
-                        }, {
-                            x: 1,
-                            y: 2,
-                            type: f.y,
-                            model: f.l
-                        }, {
-                            x: 2,
-                            y: 1,
-                            type: f.w,
-                            model: f.j
-                        }, {
-                            x: 2,
-                            y: 2,
-                            type: f.w,
-                            model: f.j
-                        }],
-                        commands: [p.c, p.b, p.f, p.e, p.d],
-                        maxCommands: 8
-                    }]
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                x: -1,
+                                y: 0,
+                                type: f.z,
+                                model: f.n
+                            }, {
+                                x: -1,
+                                y: 2,
+                                type: f.u,
+                                model: f.q
+                            }, {
+                                x: 0,
+                                y: 0,
+                                type: f.A,
+                                model: f.h
+                            }, {
+                                x: 0,
+                                y: 2,
+                                type: f.x,
+                                model: f.k,
+                                math: 1
+                            }, {
+                                x: 1,
+                                y: 0,
+                                type: f.y,
+                                model: f.l
+                            }, {
+                                x: 1,
+                                y: 1,
+                                type: f.w,
+                                model: f.j
+                            }, {
+                                x: 1,
+                                y: 2,
+                                type: f.y,
+                                model: f.l
+                            }, {
+                                x: 2,
+                                y: 1,
+                                type: f.w,
+                                model: f.j
+                            }, {
+                                x: 2,
+                                y: 2,
+                                type: f.w,
+                                model: f.j
+                            }],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 8
+                        },
+                        // Level 1: "Вверх и вниз". Набрать 3, пройти, сбросить до 0.
+                        // Path: Start -> +1 -> Barrier(=3) -> -1 -> Barrier(=0) -> End
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                }, // +1
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 3
+                                }, // Barrier = 3
+                                {
+                                    x: 3,
+                                    y: 0,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                }, // -1
+                                {
+                                    x: 4,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 0
+                                }, // Barrier = 0
+                                {
+                                    x: 5,
+                                    y: 0,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 8
+                        },
+
+                        // Level 2: "Двойной подъем". Набрать 2, пройти, набрать еще до 4.
+                        // Path: Start -> +1 -> Barrier(=2) -> +1 -> Barrier(=4) -> End
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 2
+                                },
+                                {
+                                    x: 3,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 4,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 4
+                                },
+                                {
+                                    x: 5,
+                                    y: 0,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 8
+                        },
+
+                        // Level 3: "Отрицательный путь". Сбросить до -2, пройти, вернуться к 0.
+                        // Path: Start -> -1 -> Barrier(=-2) -> +1 -> Barrier(=0) -> End
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                },
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: -2
+                                },
+                                {
+                                    x: 3,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 4,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 0
+                                },
+                                {
+                                    x: 5,
+                                    y: 0,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 8
+                        },
+
+                        // Level 4: "Поворот". Набрать 3, повернуть, сбросить до 1.
+                        // Path: Start -> +1 -> Barrier(=3) -> (Turn) -> -1 -> Barrier(=1) -> End
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 3
+                                },
+                                {
+                                    x: 2,
+                                    y: 1,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                },
+                                {
+                                    x: 2,
+                                    y: 2,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 1
+                                },
+                                {
+                                    x: 2,
+                                    y: 3,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 10
+                        },
+
+                        // Level 5: "Большие шаги". Набрать 5, пройти, набрать 10.
+                        // Path: Start -> +1 -> Barrier(=5) -> +1 -> Barrier(=10) -> End
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 5
+                                },
+                                {
+                                    x: 3,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 4,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 10
+                                },
+                                {
+                                    x: 5,
+                                    y: 0,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 8
+                        },
+
+                        // Level 6: "Зиг-заг". -2, поворот, 0.
+                        // Path: Start -> -1 -> Barrier(=-2) -> (Turn) -> +1 -> Barrier(=0) -> End
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                },
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: -2
+                                },
+                                {
+                                    x: 2,
+                                    y: -1,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 2,
+                                    y: -2,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 0
+                                },
+                                {
+                                    x: 2,
+                                    y: -3,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 10
+                        },
+
+                        // Level 7: "Качели". Набрать 4, пройти, сбросить до 2.
+                        // Path: Start -> +1 -> Barrier(=4) -> -1 -> Barrier(=2) -> End
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 4
+                                },
+                                {
+                                    x: 3,
+                                    y: 0,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                },
+                                {
+                                    x: 4,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 2
+                                },
+                                {
+                                    x: 5,
+                                    y: 0,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 8
+                        },
+
+                        // Level 8: "Обратный ход". Сбросить до -3, пройти, сбросить до -6.
+                        // Path: Start -> -1 -> Barrier(=-3) -> -1 -> Barrier(=-6) -> End
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                },
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: -3
+                                },
+                                {
+                                    x: 3,
+                                    y: 0,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                },
+                                {
+                                    x: 4,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: -6
+                                },
+                                {
+                                    x: 5,
+                                    y: 0,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 8
+                        },
+
+                        // Level 9: "Угол". Набрать 3, угол, сбросить до 2.
+                        // Path: Start -> +1 -> Barrier(=3) -> (Turn) -> -1 -> Barrier(=2) -> End
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 3
+                                },
+                                {
+                                    x: 2,
+                                    y: -1,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                },
+                                {
+                                    x: 2,
+                                    y: -2,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 2
+                                },
+                                {
+                                    x: 3,
+                                    y: -2,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 10
+                        },
+
+                        // Level 10: "Финал разминки". Набрать 2, пройти, набрать 5.
+                        // Path: Start -> +1 -> Barrier(=2) -> +1 -> Barrier(=5) -> End
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 0,
+                                    y: 1,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 0,
+                                    y: 2,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 2
+                                },
+                                {
+                                    x: 0,
+                                    y: 3,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 0,
+                                    y: 4,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 5
+                                },
+                                {
+                                    x: 0,
+                                    y: 5,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 8
+                        },
+                        // Level 11: "Три шага". 2 -> 4 -> 6.
+                        // Path: Start -> +1 -> R(=2) -> +1 -> R(=4) -> +1 -> R(=6) -> End
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 2
+                                },
+                                {
+                                    x: 3,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 4,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 4
+                                },
+                                {
+                                    x: 5,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 6,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 6
+                                },
+                                {
+                                    x: 7,
+                                    y: 0,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 10
+                        },
+
+                        // Level 12: "Волна". 3 -> 0 -> 3.
+                        // Path: Start -> +1 -> R(=3) -> -1 -> R(=0) -> +1 -> R(=3) -> End
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 3
+                                },
+                                {
+                                    x: 3,
+                                    y: 0,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                },
+                                {
+                                    x: 4,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 0
+                                },
+                                {
+                                    x: 5,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 6,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 3
+                                },
+                                {
+                                    x: 7,
+                                    y: 0,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 10
+                        },
+
+                        // Level 13: "Глубокое погружение". -2 -> -4 -> -2.
+                        // Path: Start -> -1 -> R(=-2) -> -1 -> R(=-4) -> +1 -> R(=-2) -> End
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                },
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: -2
+                                },
+                                {
+                                    x: 3,
+                                    y: 0,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                },
+                                {
+                                    x: 4,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: -4
+                                },
+                                {
+                                    x: 5,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 6,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: -2
+                                },
+                                {
+                                    x: 7,
+                                    y: 0,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 10
+                        },
+
+                        // Level 14: "Лестница". 2, поворот, 4, поворот, 6.
+                        // Path: Start -> +1 -> R(=2) -> (Up) -> +1 -> R(=4) -> (Right) -> +1 -> R(=6) -> End
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 2
+                                },
+                                {
+                                    x: 2,
+                                    y: 1,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 2,
+                                    y: 2,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 4
+                                },
+                                {
+                                    x: 3,
+                                    y: 2,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 4,
+                                    y: 2,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 6
+                                },
+                                {
+                                    x: 5,
+                                    y: 2,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 12
+                        },
+
+                        // Level 15: "Сложная арифметика". 3 -> 1 -> 4.
+                        // Path: Start -> +1 -> R(=3) -> -1 -> R(=1) -> +1 -> R(=4) -> End
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 3
+                                },
+                                {
+                                    x: 3,
+                                    y: 0,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                },
+                                {
+                                    x: 4,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 1
+                                },
+                                {
+                                    x: 5,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 6,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 4
+                                },
+                                {
+                                    x: 7,
+                                    y: 0,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 10
+                        },
+
+                        // Level 16: "Змейка". -2 -> 0 -> 2.
+                        // Path: Start -> -1 -> R(=-2) -> +1 -> R(=0) -> +1 -> R(=2) -> End
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                },
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: -2
+                                },
+                                {
+                                    x: 3,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 4,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 0
+                                },
+                                {
+                                    x: 5,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 6,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 2
+                                },
+                                {
+                                    x: 7,
+                                    y: 0,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 10
+                        },
+
+                        // Level 17: "Вниз по спирали". 2 -> 1 -> 0.
+                        // Path: Start -> +1 -> R(=2) -> (Turn) -> -1 -> R(=1) -> (Turn) -> -1 -> R(=0) -> End
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 2
+                                },
+                                {
+                                    x: 2,
+                                    y: 1,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                },
+                                {
+                                    x: 2,
+                                    y: 2,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 1
+                                },
+                                {
+                                    x: 1,
+                                    y: 2,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                },
+                                {
+                                    x: 0,
+                                    y: 2,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 0
+                                },
+                                {
+                                    x: -1,
+                                    y: 2,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 14
+                        },
+
+                        // Level 18: "Набор высоты". 4 -> 8 -> 12.
+                        // Path: Start -> +1 -> R(=4) -> +1 -> R(=8) -> +1 -> R(=12) -> End
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 4
+                                },
+                                {
+                                    x: 3,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 4,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 8
+                                },
+                                {
+                                    x: 5,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 6,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 12
+                                },
+                                {
+                                    x: 7,
+                                    y: 0,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 10
+                        },
+
+                        // Level 19: "Туда-сюда". 3 -> 0 -> 3.
+                        // Path: Start -> +1 -> R(=3) -> -1 -> R(=0) -> +1 -> R(=3) -> End
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 3
+                                },
+                                {
+                                    x: 3,
+                                    y: 0,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                },
+                                {
+                                    x: 4,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 0
+                                },
+                                {
+                                    x: 5,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 6,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 3
+                                },
+                                {
+                                    x: 7,
+                                    y: 0,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 10
+                        },
+
+                        // Level 20: "Финальный марафон". 5 -> 2 -> 6.
+                        // Path: Start -> +1 -> R(=5) -> -1 -> R(=2) -> +1 -> R(=6) -> End
+                        {
+                            completed: !1,
+                            finished: !1,
+                            attempts: 0,
+                            tiles: [{
+                                    x: -1,
+                                    y: 0,
+                                    type: f.z,
+                                    model: f.n
+                                },
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    type: f.A,
+                                    model: f.h
+                                },
+                                {
+                                    x: 1,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 2,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 5
+                                },
+                                {
+                                    x: 3,
+                                    y: 0,
+                                    type: f.y,
+                                    model: f.l,
+                                    math: 1
+                                },
+                                {
+                                    x: 4,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 2
+                                },
+                                {
+                                    x: 5,
+                                    y: 0,
+                                    type: f.w,
+                                    model: f.j
+                                },
+                                {
+                                    x: 6,
+                                    y: 0,
+                                    type: f.x,
+                                    model: f.k,
+                                    math: 6
+                                },
+                                {
+                                    x: 7,
+                                    y: 0,
+                                    type: f.u,
+                                    model: f.q
+                                }
+                            ],
+                            commands: [p.c, p.b, p.f, p.e, p.d],
+                            maxCommands: 10
+                        }
+                    ]
                 },
                 T = n("maE9"),
                 M = n.n(T),
