@@ -73,6 +73,21 @@
     if (!logoContainer) return;
 
     let gameStarted = false;
+    let isHidden = false;
+
+    const hideLogo = () => {
+      if (isHidden) return;
+
+      isHidden = true;
+      logoContainer.style.transition = 'opacity 0.5s ease-out';
+      logoContainer.style.opacity = '0';
+      setTimeout(() => {
+        logoContainer.style.display = 'none';
+      }, 500);
+    };
+
+    const hasGameElements = () =>
+      Boolean(document.querySelector('canvas, [class*="game"], [class*="level"], [class*="board"]'));
 
     // Отслеживаем клики по всему документу
     document.addEventListener('click', function(event) {
@@ -89,29 +104,17 @@
         if (isStartButton) {
           gameStarted = true;
           // Скрываем логотип с плавной анимацией
-          logoContainer.style.transition = 'opacity 0.5s ease-out';
-          logoContainer.style.opacity = '0';
-          setTimeout(() => {
-            logoContainer.style.display = 'none';
-          }, 500);
+          hideLogo();
         }
       }
     });
 
     // Также отслеживаем изменения в DOM, но только после клика на кнопку старта
     const observer = new MutationObserver(function(mutations) {
-      // Проверяем только если игра уже начата
-      if (!gameStarted) return;
-
       // Проверяем, не появилось ли игровое поле
-      const hasGameElements = document.querySelector('canvas, [class*="game"], [class*="level"], [class*="board"]');
-
-      if (hasGameElements && logoContainer.style.display !== 'none') {
-        logoContainer.style.transition = 'opacity 0.5s ease-out';
-        logoContainer.style.opacity = '0';
-        setTimeout(() => {
-          logoContainer.style.display = 'none';
-        }, 500);
+      if (hasGameElements()) {
+        gameStarted = true;
+        hideLogo();
         observer.disconnect();
       }
     });
@@ -121,6 +124,14 @@
       childList: true,
       subtree: true
     });
+
+    // Если пользователь сразу оказался на экране уровня (например, через прямую ссылку
+    // или при возврате на страницу), сразу скрываем логотип после инициализации.
+    if (hasGameElements()) {
+      gameStarted = true;
+      hideLogo();
+      observer.disconnect();
+    }
   }
 
   function init() {
