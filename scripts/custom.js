@@ -120,11 +120,58 @@
     syncLogo();
   }
 
+  function hideAddBoardButton(root = document) {
+    const button = Array.from(root.querySelectorAll('button, a')).find(
+      (el) => el.textContent.trim() === 'Legg til brett'
+    );
+
+    if (button) {
+      button.style.display = 'none';
+      button.dataset.robocotHidden = 'true';
+    }
+  }
+
+  function hideCodeInput(root = document) {
+    const input = root.querySelector('input[name="codeInput"]');
+
+    if (input) {
+      input.style.display = 'none';
+      input.dataset.robocotHidden = 'true';
+    }
+  }
+
+  function clearCodePlaceholder(root = document) {
+    const input = root.querySelector('input[placeholder="Kode f.eks 6AXP"]');
+
+    if (input) {
+      input.placeholder = '';
+      input.dataset.robocotPlaceholderCleared = 'true';
+    }
+  }
+
+  function setupLevelSelectionTweaks() {
+    const applyTweaks = () => {
+      hideAddBoardButton();
+      hideCodeInput();
+      clearCodePlaceholder();
+    };
+
+    const observer = new MutationObserver(applyTweaks);
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+
+    applyTweaks();
+  }
+
   function init() {
     injectHidingStyles();
     injectLogoStyles();
     injectLogo();
     setupLogoHiding();
+    setupLevelSelectionTweaks();
   }
 
   if (document.readyState === 'complete' || document.readyState === 'interactive') {
