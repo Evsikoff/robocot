@@ -699,13 +699,7 @@
                                 onClick: function() {
                                     y("brett"), l(!0)
                                 }
-                            }, o.a.createElement(U, null), o.a.createElement("span", null, f()("nav.level"))), o.a.createElement(T.a, {
-                                key: ve,
-                                to: "/" + ve,
-                                onClick: function() {
-                                    y("lag brett"), l(!0)
-                                }
-                            }, o.a.createElement(oe, null), o.a.createElement("span", null, f()("nav.create"))), o.a.createElement("button", {
+                            }, o.a.createElement(U, null), o.a.createElement("span", null, f()("nav.level"))), o.a.createElement("button", {
                                 key: "getLevelInputLabel",
                                 className: fe.a.getLevelField,
                                 onClick: t.toggleGetLevelField
