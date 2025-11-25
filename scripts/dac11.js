@@ -7971,7 +7971,7 @@
                 },
                 levelCompleteDialog: {
                     body: "Ты справился!<br/>Давай попробуем следующий уровень.",
-                    lastLevel: "Hurray, you finished the last level!<br/>Now you can play through them again.",
+                    lastLevel: "Ура, ты прошёл последний уровень!<br/>Теперь можешь сыграть заново.",
                     gotoLevels: "Выбрать уровень",
                     retryButtonLabel: "Играть снова",
                     nextButtonLable: "Далее"
