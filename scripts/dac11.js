@@ -3466,32 +3466,56 @@
                         c = t.clearProgram,
                         V = t.displayLevelCompleteDialog,
                         u = t.completedLevels,
-                        p = n.length - 1;
+                        p = n.filter(function(e) {
+                            return !e.isCustom
+                        }),
+                        A = n.find(function(e) {
+                            return e.isCustom
+                        });
                     return o.a.createElement("div", {
                         className: Pa.a.main
-                    }, o.a.createElement("ol", null, n.map(function(e, t) {
-                        if (t !== p) return e.levels.map(function(e, n) {
+                    }, o.a.createElement("ol", null, p.map(function(e) {
+                        var t = n.indexOf(e);
+                        return e.levels.map(function(e, n) {
                             var r;
                             return o.a.createElement("li", {
                                 className: L()(Pa.a["group" + t], (r = {}, r[Pa.a.complete] = u[t] && -1 !== u[t].indexOf(n), r)),
-                                key: n
+                                key: t + "-" + n
                             }, o.a.createElement("button", {
                                 onClick: function() {
                                     s(!0), a(parseInt(t), parseInt(n)), l(!0), c(), V(!1), i.push("/")
                                 }
                             }, parseInt(t) + 1, ".", parseInt(n) + 1))
                         })
-                    })), n[n.length - 1].levels.length > 0 && null, o.a.createElement("ol", null, n[n.length - 1].levels.map(function(e, t) {
-                        var n;
+                    })), A && A.levels.length > 0 && o.a.createElement("div", {
+                        style: {
+                            marginTop: "1.5rem"
+                        }
+                    }, o.a.createElement("p", {
+                        style: {
+                            fontWeight: "bold"
+                        }
+                    }, f()("levelSelection.customLevelsTitle")), o.a.createElement("ol", null, A.levels.map(function(e, t) {
+                        var r = A ? Math.max(0, n.indexOf(A)) : 0;
                         return o.a.createElement("li", {
-                            className: L()(Pa.a["group" + p], (n = {}, n[Pa.a.complete] = u[p] && -1 !== u[p].indexOf(t), n)),
-                            key: t
+                            className: L()(Pa.a["group" + r], Pa.a.customGroup),
+                            key: "custom-" + (e.levelId || t)
                         }, o.a.createElement("button", {
+                            style: {
+                                border: "2px dashed #ff003a"
+                            },
                             onClick: function() {
-                                s(!0), a(parseInt(p), parseInt(t)), l(!0), c(), V(!1), i.push("/")
+                                s(!0), a(parseInt(r), parseInt(t)), l(!0), c(), V(!1), i.push("/")
                             }
-                        }, parseInt(p) + 1, ".", parseInt(t) + 1))
-                    })), o.a.createElement("div", null, o.a.createElement("input", {
+                        }, o.a.createElement("span", {
+                            style: {
+                                color: "#ff003a",
+                                marginRight: "0.5rem"
+                            }
+                        }, f()("levelSelection.customBadge")), e.levelId || f()("levelSelection.customLevelLabel", {
+                            levelNumber: t + 1
+                        })))
+                    }))), o.a.createElement("div", null, o.a.createElement("input", {
                         ref: this.codeInput,
                         value: e,
                         onChange: this.handleInput,
@@ -3959,8 +3983,15 @@
                             o = e.levelGroups,
                             i = e.setLevel;
                         a(!1), setTimeout(function() {
-                            var e = o[n].levels;
-                            t + 1 < e.length ? i(n, t + 1) : n + 1 < o.length && i(n + 1, 0)
+                            var e = o.filter(function(e) {
+                                    return !e.isCustom
+                                }),
+                                r = e.indexOf(o[n]);
+                            if (-1 !== r) {
+                                var a = e[r].levels,
+                                    s = o.indexOf(e[r]);
+                                t + 1 < a.length ? i(s, t + 1) : r + 1 < e.length && i(o.indexOf(e[r + 1]), 0)
+                            }
                         }, ro)
                     }, r.dialogRef = o.a.createRef(), r
                 }
@@ -3980,8 +4011,12 @@
                         n = t.levelGroups,
                         r = t.currentLevelGroup,
                         a = t.currentLevel,
-                        i = r + 1 >= n.length && a + 1 >= n[r].levels.length,
-                        s = i ? f()("levelCompleteDialog.lastLevel") : f()("levelCompleteDialog.body");
+                        i = n.filter(function(e) {
+                            return !e.isCustom
+                        }),
+                        s = i.indexOf(n[r]),
+                        l = -1 === s || s + 1 >= i.length && a + 1 >= n[r].levels.length,
+                        c = l ? f()("levelCompleteDialog.lastLevel") : f()("levelCompleteDialog.body");
                     return o.a.createElement("div", {
                         ref: this.dialogRef,
                         className: no.a.main
@@ -3991,11 +4026,11 @@
                         className: no.a.text
                     }, o.a.createElement("h2", null, r + 1, ".", a + 1), o.a.createElement("p", {
                         dangerouslySetInnerHTML: {
-                            __html: s
+                            __html: c
                         }
                     })), o.a.createElement("div", {
                         className: no.a.actions
-                    }, i ? o.a.createElement(T.a, {
+                    }, l ? o.a.createElement(T.a, {
                         className: no.a.next,
                         to: "/brett"
                     }, o.a.createElement("span", null, f()("levelCompleteDialog.gotoLevels")), o.a.createElement(eo, null)) : o.a.createElement("button", {
@@ -4682,9 +4717,14 @@
                 levelEditor: {
                     buttonLabelTest: "Тестировать уровень",
                     buttonLabelEdit: "Изменить уровень",
-                    yourCodeIs: "Koden til brettet ditt er %(currentCustomLevelCode)s.<br>Skriv koden ned, og del den med en venn!",
+                    yourCodeIs: "Код вашего уровня: %(currentCustomLevelCode)s.<br>Вы найдете его в разделе \"Выбор уровня\". Поделитесь кодом с другом!",
                     getFieldPlaceholder: "Kode f.eks 6AXP",
                     buttonLabelSave: "Сохранить"
+                },
+                levelSelection: {
+                    customLevelsTitle: "Пользовательские уровни",
+                    customBadge: "Пользовательский",
+                    customLevelLabel: "Уровень %(levelNumber)s"
                 },
                 helptext: {
                     "editor-select-tile": "Выбери, где разместить или изменить блок.",
@@ -7339,6 +7379,7 @@
                     settings: {
                         backgroundColor: v.e
                     },
+                    isCustom: !0,
                     levels: []
                 },
                 P = n("wB1T"),
@@ -7364,7 +7405,7 @@
                     getLevelError: !1,
                     currentCustomLevelCode: !1,
                     loadedCustomLevelCodes: [],
-                    levelGroups: [b, L, x, R, I]
+                    levelGroups: [b, L, x, R, I, D]
                 },
                 j = function(e, t, n, r, a) {
                     return B({}, t, {
@@ -7559,10 +7600,26 @@
                                     savingInProgress: !0
                                 });
                             case i.g:
+                                var p = [].concat(e.levelGroups),
+                                    A = p.findIndex(function(e) {
+                                        return e.isCustom
+                                    }),
+                                    d = e.currentLevelData ? B({}, e.currentLevelData, {
+                                        levelId: t.payload.levelId,
+                                        isCustom: !0,
+                                        completed: !1,
+                                        finished: !1
+                                    }) : null;
+                                -1 === A && (A = p.length - 1), d && (p[A] = B({}, p[A], {
+                                    levels: p[A].levels.some(function(e) {
+                                        return e.levelId === d.levelId
+                                    }) ? p[A].levels : [].concat(p[A].levels, [d])
+                                }));
                                 return B({}, e, {
                                     currentCustomLevelCode: t.payload.levelId,
                                     savingInProgress: !1,
-                                    savingError: !1
+                                    savingError: !1,
+                                    levelGroups: p
                                 });
                             case i.e:
                                 return B({}, e, {
@@ -7571,9 +7628,11 @@
                                 });
                             case i.c:
                                 var s = [].concat(e.levelGroups),
-                                    l = s.length - 1,
+                                    l = s.findIndex(function(e) {
+                                        return e.isCustom
+                                    }),
                                     c = h(t.payload.tiles);
-                                s[l] = B({}, s[l], {
+                                c.levelId = t.payload.levelId, c.isCustom = !0, -1 === l && (l = s.length - 1), s[l] = B({}, s[l], {
                                     levels: [].concat(s[l].levels, [c])
                                 });
                                 var V = s[l].levels.indexOf(c),
@@ -7983,9 +8042,14 @@
                 levelEditor: {
                     buttonLabelTest: "Тестировать уровень",
                     buttonLabelEdit: "Изменить уровень",
-                    yourCodeIs: "The code for your level is %(currentCustomLevelCode)s.<br>Copy your code and share it with a friend!",
+                    yourCodeIs: "The code for your level is %(currentCustomLevelCode)s.<br>You can find it on the level selection screen and share the code with a friend!",
                     getFieldPlaceholder: "Code eg. 6AXP",
                     buttonLabelSave: "Сохранить"
+                },
+                levelSelection: {
+                    customLevelsTitle: "Custom levels",
+                    customBadge: "Custom",
+                    customLevelLabel: "Level %(levelNumber)s"
                 },
                 helptext: {
                     "editor-select-tile": "Выбери, где разместить или переместить блок",
