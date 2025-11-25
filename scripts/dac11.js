@@ -4718,6 +4718,7 @@
                     buttonLabelTest: "Тестировать уровень",
                     buttonLabelEdit: "Изменить уровень",
                     yourCodeIs: "Код вашего уровня: %(currentCustomLevelCode)s.<br>Вы найдете его в разделе \"Выбор уровня\". Поделитесь кодом с другом!",
+                    saveLevelFailed: "Не удалось сохранить уровень. Проверьте подключение к интернету и попробуйте еще раз.",
                     getFieldPlaceholder: "Kode f.eks 6AXP",
                     buttonLabelSave: "Сохранить"
                 },
@@ -7473,7 +7474,9 @@
                                 });
                             case i.a:
                                 return c({}, t, {
-                                    helpText: l()(n.payload.errors.message)
+                                    helpText: l()(
+                                        n && n.payload && n.payload.errors && n.payload.errors.message ? n.payload.errors.message : "levelEditor.saveLevelFailed"
+                                    )
                                 });
                             case i.c:
                                 return c({}, t, {
@@ -8043,6 +8046,7 @@
                     buttonLabelTest: "Тестировать уровень",
                     buttonLabelEdit: "Изменить уровень",
                     yourCodeIs: "The code for your level is %(currentCustomLevelCode)s.<br>You can find it on the level selection screen and share the code with a friend!",
+                    saveLevelFailed: "We couldn't save your level. Please check your connection and try again.",
                     getFieldPlaceholder: "Code eg. 6AXP",
                     buttonLabelSave: "Сохранить"
                 },
