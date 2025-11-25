@@ -131,6 +131,15 @@
     }
   }
 
+  function hideCodeInput(root = document) {
+    const input = root.querySelector('input[name="codeInput"]');
+
+    if (input) {
+      input.style.display = 'none';
+      input.dataset.robocotHidden = 'true';
+    }
+  }
+
   function clearCodePlaceholder(root = document) {
     const input = root.querySelector('input[placeholder="Kode f.eks 6AXP"]');
 
@@ -143,6 +152,7 @@
   function setupLevelSelectionTweaks() {
     const applyTweaks = () => {
       hideAddBoardButton();
+      hideCodeInput();
       clearCodePlaceholder();
     };
 
