@@ -3,6 +3,43 @@
   const logoStyleId = 'robocot-logo-style';
   const logoContainerId = 'robocot-logo-container';
 
+  // Detect if running in Android WebView
+  function isAndroidWebView() {
+    const ua = navigator.userAgent.toLowerCase();
+    return ua.indexOf('wv') > -1 || ua.indexOf('android') > -1;
+  }
+
+  // Reset navigation to home page for WebView on first load
+  function resetNavigationForWebView() {
+    if (!isAndroidWebView()) return;
+
+    const isFirstLoad = !sessionStorage.getItem('robocot-webview-initialized');
+
+    if (isFirstLoad) {
+      sessionStorage.setItem('robocot-webview-initialized', 'true');
+
+      // Clear any saved routing state
+      try {
+        const keysToRemove = [];
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key && (key.includes('route') || key.includes('path') || key.includes('location'))) {
+            keysToRemove.push(key);
+          }
+        }
+        keysToRemove.forEach(key => localStorage.removeItem(key));
+      } catch (e) {
+        console.warn('Could not clear localStorage:', e);
+      }
+
+      // Force navigation to root if not already there
+      if (window.location.pathname !== '/' && window.location.pathname !== '') {
+        window.history.replaceState(null, '', '/');
+        window.location.reload();
+      }
+    }
+  }
+
   function injectHidingStyles() {
     if (document.getElementById(styleId)) return;
 
@@ -241,20 +278,70 @@
 
   function applyResponsiveLogoBehavior() {
     if (isMobileLandscape()) {
-      // Мобильный логотип (замена SVG) продолжаем использовать
+      // Mobile landscape: replace SVG logo with IMG
       teardownDesktopLogo();
       setupMobileLogoReplacement();
     } else {
-      // Во всех остальных режимах не показываем robocot-logo-container
+      // All other modes: show fixed logo container
       stopMobileLogoReplacement();
-      teardownDesktopLogo();
+      injectLogoStyles();
+      injectLogo();
+      setupLogoHiding();
     }
   }
 
+  // Enable WebView video support
+  function enableWebViewVideoSupport() {
+    if (!isAndroidWebView()) return;
+
+    // Wait for videos to be added to the DOM
+    const observer = new MutationObserver(() => {
+      const videos = document.querySelectorAll('video');
+      videos.forEach(video => {
+        if (video.dataset.robocotVideoFixed === 'true') return;
+
+        // Add attributes for WebView compatibility
+        video.setAttribute('playsinline', '');
+        video.setAttribute('webkit-playsinline', '');
+        video.muted = true;
+
+        // Force load and play
+        video.load();
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(e => {
+            console.warn('Video autoplay failed:', e);
+          });
+        }
+
+        video.dataset.robocotVideoFixed = 'true';
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+
+    // Also fix any existing videos
+    setTimeout(() => {
+      const videos = document.querySelectorAll('video');
+      videos.forEach(video => {
+        video.setAttribute('playsinline', '');
+        video.setAttribute('webkit-playsinline', '');
+        video.muted = true;
+        video.load();
+        video.play().catch(e => console.warn('Video play failed:', e));
+      });
+    }, 1000);
+  }
+
   function init() {
+    resetNavigationForWebView();
     injectHidingStyles();
     setupLevelSelectionTweaks();
     applyResponsiveLogoBehavior();
+    enableWebViewVideoSupport();
     mobileQuery.addEventListener('change', applyResponsiveLogoBehavior);
     landscapeQuery.addEventListener('change', applyResponsiveLogoBehavior);
   }
