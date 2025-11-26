@@ -3673,161 +3673,11 @@
                         for (var r in e) t.indexOf(r) >= 0 || Object.prototype.hasOwnProperty.call(e, r) && (n[r] = e[r]);
                         return n
                     }(e, ["styles"]);
-                    return o.a.createElement("svg", Wa({
-                        height: "120",
-                        viewBox: "0 0 120 120",
-                        width: "120",
-                        xmlns: "http://www.w3.org/2000/svg"
-                    }, t), o.a.createElement("linearGradient", {
-                        id: "a",
-                        x1: "13.443%",
-                        x2: "87.597%",
-                        y1: "61.307%",
-                        y2: "59.188%"
-                    }, o.a.createElement("stop", {
-                        offset: "0",
-                        stopColor: "#637788"
-                    }), o.a.createElement("stop", {
-                        offset: "1",
-                        stopColor: "#273745"
-                    })), o.a.createElement("g", {
-                        fill: "none",
-                        fillRule: "evenodd"
-                    }, o.a.createElement("path", {
-                        d: "M36.4 94.563l-4.8 16.874",
-                        fill: "#2a79a1",
-                        stroke: "#637788",
-                        strokeLinecap: "round",
-                        strokeLinejoin: "round",
-                        strokeWidth: "3"
-                    }), o.a.createElement("path", {
-                        d: "M87.6 88.571l4.8 14.858",
-                        stroke: "#637788",
-                        strokeLinecap: "round",
-                        strokeLinejoin: "round",
-                        strokeWidth: "3"
-                    }), o.a.createElement("path", {
-                        d: "M58 57H18v19.597l4.825 15.976L44.108 103h27.784l21.283-10.427L98 76.597V57z",
-                        fill: "url(#a)"
-                    }), o.a.createElement("path", {
-                        d: "M58 37l-26.108 5.549L18 56.597l4.825 15.976L44.108 83h27.784l21.283-10.427L98 56.597 84.108 42.549z",
-                        fill: "#c0cbd4"
-                    }), o.a.createElement("ellipse", {
-                        cx: "58",
-                        cy: "58.5",
-                        fill: "#273745",
-                        fillRule: "nonzero",
-                        rx: "28",
-                        ry: "13.5",
-                        stroke: "#fff"
-                    }), o.a.createElement("g", {
-                        transform: "translate(43 17)"
-                    }, o.a.createElement("path", {
-                        d: "M30.29 31.569l-14.676 7.38V21.236l14.676-7.38z",
-                        fill: "#273745"
-                    }), o.a.createElement("path", {
-                        d: "M27.622 46.646l-12.008 5.943V36.968l12.008-5.943z",
-                        fill: "#273745"
-                    }), o.a.createElement("path", {
-                        d: "M28.956 30.082l-10.674 4.905V22.724l10.674-4.906z",
-                        fill: "#fae1e7"
-                    }), o.a.createElement("path", {
-                        d: "M15.614 21.236L.937 13.856V31.57l14.677 7.38z",
-                        fill: "#637788"
-                    }), o.a.createElement("path", {
-                        d: "M15.614 36.968L3.605 31.025v15.62l12.009 5.944z",
-                        fill: "#637788"
-                    }), o.a.createElement("path", {
-                        d: "M.937 13.949l14.677-7.264 14.676 7.264-14.676 7.263z",
-                        fill: "#c0cbd4"
-                    }), o.a.createElement("path", {
-                        d: "M27.622 44.698l-6.671 3.496v-8.39l6.67-3.496z",
-                        fill: "#273745"
-                    }), o.a.createElement("path", {
-                        d: "M20.95 38.848l-2.668-1.22v8.025l2.669 1.22z",
-                        fill: "#637788"
-                    }), o.a.createElement("path", {
-                        d: "M18.282 37.904l6.839-2.917 2.5 1.045-6.838 2.917z",
-                        fill: "#c0cbd4"
-                    }), o.a.createElement("path", {
-                        d: "M11.61 31.159l-2.668 1.187v-8.058l2.669-1.187z",
-                        fill: "#273745"
-                    }), o.a.createElement("path", {
-                        d: "M8.942 23.567l-6.67-3.107v7.457l6.67 3.108z",
-                        fill: "#637788"
-                    }), o.a.createElement("path", {
-                        d: "M2.271 21.484l2.43-1.024 6.91 2.937-2.43 1.025z",
-                        fill: "#c0cbd4"
-                    }), o.a.createElement("ellipse", {
-                        cx: "21.618",
-                        cy: "25.082",
-                        fill: "#273745",
-                        fillRule: "nonzero",
-                        rx: "1",
-                        ry: "1.981"
-                    }), o.a.createElement("ellipse", {
-                        cx: "25.62",
-                        cy: "22.441",
-                        fill: "#273745",
-                        fillRule: "nonzero",
-                        rx: "1",
-                        ry: "1.981"
-                    }), o.a.createElement("path", {
-                        d: "M20.95 13.773l-5.336 2.725v-2.559l5.337-2.724z",
-                        fill: "#273745"
-                    }), o.a.createElement("path", {
-                        d: "M15.614 13.94l-5.337-2.725v2.558l5.337 2.725z",
-                        fill: "#637788"
-                    }), o.a.createElement("path", {
-                        d: "M10.277 11.215l5.337-2.641 5.337 2.64-5.337 2.642z",
-                        fill: "#c0cbd4"
-                    }), o.a.createElement("g", {
-                        fillRule: "nonzero"
-                    }, o.a.createElement("path", {
-                        d: "M15.614 4.011l1.334-.72v7.204l-1.334.72z",
-                        fill: "#273745"
-                    }), o.a.createElement("path", {
-                        d: "M14.28 3.29l1.334.721v7.204l-1.335-.72z",
-                        fill: "#637788"
-                    }), o.a.createElement("ellipse", {
-                        cx: "15.614",
-                        cy: "2.631",
-                        fill: "#c0cbd4",
-                        rx: "2.001",
-                        ry: "1.981"
-                    }), o.a.createElement("path", {
-                        d: "M9.275 36.308c-.99 5.32.233 8.842 3.67 10.565",
-                        stroke: "#c0cbd4",
-                        strokeLinecap: "round",
-                        strokeWidth: "3.96"
-                    }))), o.a.createElement("g", {
-                        fillRule: "nonzero"
-                    }, o.a.createElement("path", {
-                        d: "M58 72c15.464 0 28-7.198 28-12.375 0-.7-.025-23.893-.075-24.58C84.865 20.483 72.768 9 58 9c-14.899 0-27.08 9.499-27.95 26.194-.033.634-.05 23.777-.05 24.431C30 65.27 42.536 72 58 72z",
-                        fill: "#d2f6ff",
-                        fillOpacity: ".5",
-                        stroke: "#fff"
-                    }), o.a.createElement("ellipse", {
-                        cx: "33",
-                        cy: "87",
-                        fill: "#feffc1",
-                        rx: "3",
-                        ry: "4",
-                        stroke: "#273745"
-                    }), o.a.createElement("circle", {
-                        cx: "58",
-                        cy: "93",
-                        fill: "#feffc1",
-                        r: "4",
-                        stroke: "#273745"
-                    }), o.a.createElement("ellipse", {
-                        cx: "84",
-                        cy: "86",
-                        fill: "#feffc1",
-                        rx: "3",
-                        ry: "4",
-                        stroke: "#273745"
-                    }))))
+                    // Заменяем SVG на IMG с логотипом
+                    return o.a.createElement("img", Wa({
+                        src: "logo.png",
+                        alt: "Biip"
+                    }, t))
                 },
                 Ha = n("I2VK"),
                 Xa = n.n(Ha),
@@ -7606,8 +7456,8 @@
                                         isCustom: !0,
                                         completed: !1,
                                         finished: !1
-                                    }) : null;
-                                -1 === A && (A = p.length - 1), d && (p[A] = B({}, p[A], {
+                                    }) : null; -
+                                1 === A && (A = p.length - 1), d && (p[A] = B({}, p[A], {
                                     levels: p[A].levels.some(function(e) {
                                         return e.levelId === d.levelId
                                     }) ? p[A].levels : [].concat(p[A].levels, [d])
