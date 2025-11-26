@@ -109,6 +109,7 @@
     style.id = logoStyleId;
     style.textContent = `
       #${logoContainerId} {
+        display: none !important;
         position: fixed;
         top: 0;
         left: 50%;
