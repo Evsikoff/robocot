@@ -241,17 +241,13 @@
 
   function applyResponsiveLogoBehavior() {
     if (isMobileLandscape()) {
+      // Мобильный логотип (замена SVG) продолжаем использовать
       teardownDesktopLogo();
       setupMobileLogoReplacement();
     } else {
+      // Во всех остальных режимах не показываем robocot-logo-container
       stopMobileLogoReplacement();
-      if (!isMobile()) {
-        injectLogoStyles();
-        injectLogo();
-        setupLogoHiding();
-      } else {
-        teardownDesktopLogo();
-      }
+      teardownDesktopLogo();
     }
   }
 
