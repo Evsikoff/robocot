@@ -135,22 +135,22 @@
     style.textContent = `
       /* Adjust "Выбрать уровень" button for all devices */
       .be2f2 {
-        top: calc(50% + 80px) !important;
+        top: calc(50% + 100px) !important;
       }
 
       /* Adjust note button for all devices */
       ._400b2 {
-        bottom: 20px !important;
+        bottom: 35px !important;
       }
 
       /* Fine tune button positions for landscape orientation */
       @media screen and (orientation: landscape) {
         .be2f2 {
-          top: calc(50% + 60px) !important;
+          top: calc(50% + 70px) !important;
         }
 
         ._400b2 {
-          bottom: 15px !important;
+          bottom: 28px !important;
         }
       }
     `;
