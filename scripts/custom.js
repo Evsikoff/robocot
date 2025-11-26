@@ -2,6 +2,7 @@
   const styleId = 'robocot-cleanup-style';
   const logoStyleId = 'robocot-logo-style';
   const logoContainerId = 'robocot-logo-container';
+  const mobileButtonStyleId = 'robocot-mobile-button-style';
 
   // Debug logging for WebView
   function debugLog(message, data) {
@@ -119,6 +120,41 @@
       @media screen and (min-width: 600px) {
         #${logoContainerId} img {
           max-width: 300px;
+        }
+      }
+    `;
+
+    document.head.appendChild(style);
+  }
+
+  function injectMobileButtonStyles() {
+    if (document.getElementById(mobileButtonStyleId)) return;
+
+    const style = document.createElement('style');
+    style.id = mobileButtonStyleId;
+    style.textContent = `
+      /* Mobile portrait and landscape - adjust "Выбрать уровень" button */
+      @media screen and (max-width: 599px) {
+        .be2f2 {
+          top: calc(50% + 80px) !important;
+        }
+      }
+
+      /* Mobile portrait and landscape - adjust note button */
+      @media screen and (max-width: 599px) {
+        ._400b2 {
+          bottom: 20px !important;
+        }
+      }
+
+      /* Mobile landscape - fine tune button positions */
+      @media screen and (max-width: 599px) and (orientation: landscape) {
+        .be2f2 {
+          top: calc(50% + 60px) !important;
+        }
+
+        ._400b2 {
+          bottom: 15px !important;
         }
       }
     `;
@@ -389,6 +425,13 @@
       debugLog('injectHidingStyles completed');
     } catch (e) {
       debugLog('Error in injectHidingStyles:', e.message);
+    }
+
+    try {
+      injectMobileButtonStyles();
+      debugLog('injectMobileButtonStyles completed');
+    } catch (e) {
+      debugLog('Error in injectMobileButtonStyles:', e.message);
     }
 
     try {
