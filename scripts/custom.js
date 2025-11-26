@@ -52,33 +52,25 @@
 
     debugLog('resetNavigationForWebView called');
 
-    const isFirstLoad = !safeStorage.getItem(sessionStorage, 'robocot-webview-initialized');
-    debugLog('isFirstLoad:', isFirstLoad);
-
-    if (isFirstLoad) {
-      safeStorage.setItem(sessionStorage, 'robocot-webview-initialized', 'true');
-
-      // Clear any saved routing state
-      try {
-        const keysToRemove = [];
-        for (let i = 0; i < localStorage.length; i++) {
-          const key = localStorage.key(i);
-          if (key && (key.includes('route') || key.includes('path') || key.includes('location'))) {
-            keysToRemove.push(key);
-          }
+    // Clear any saved routing state on every WebView load
+    try {
+      const keysToRemove = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && (key.includes('route') || key.includes('path') || key.includes('location'))) {
+          keysToRemove.push(key);
         }
-        keysToRemove.forEach(key => safeStorage.removeItem(localStorage, key));
-        debugLog('Cleared routing keys:', keysToRemove.length);
-      } catch (e) {
-        debugLog('Could not clear localStorage:', e.message);
       }
+      keysToRemove.forEach(key => safeStorage.removeItem(localStorage, key));
+      debugLog('Cleared routing keys:', keysToRemove.length);
+    } catch (e) {
+      debugLog('Could not clear localStorage:', e.message);
+    }
 
-      // Force navigation to root if not already there
-      if (window.location.pathname !== '/' && window.location.pathname !== '') {
-        debugLog('Redirecting to root from:', window.location.pathname);
-        window.history.replaceState(null, '', '/');
-        window.location.reload();
-      }
+    // Force navigation to root if not already there (without reload)
+    if (window.location.pathname !== '/' && window.location.pathname !== '' && window.location.hash !== '#/') {
+      debugLog('Redirecting to root from:', window.location.pathname);
+      window.history.replaceState(null, '', '/');
     }
   }
 
