@@ -63,7 +63,8 @@
     logoContainer.style.opacity = '0';
 
     const logoImg = document.createElement('img');
-    logoImg.src = '/logo.png';
+    // Use a relative path so the logo resolves in file-based contexts (e.g. Android WebView)
+    logoImg.src = 'logo.png';
     logoImg.alt = 'Logo';
 
     logoContainer.appendChild(logoImg);
@@ -164,7 +165,8 @@
       if (!svgLogo || svgLogo.dataset.robocotLogoReplaced === 'true') return;
 
       const img = document.createElement('img');
-      img.src = '/logo.png';
+      // Use a relative path so the logo resolves in file-based contexts (e.g. Android WebView)
+      img.src = 'logo.png';
       img.alt = 'Logo';
       img.dataset.robocotLogoReplaced = 'true';
 
