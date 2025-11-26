@@ -3,20 +3,60 @@
   const logoStyleId = 'robocot-logo-style';
   const logoContainerId = 'robocot-logo-container';
 
+  // Debug logging for WebView
+  function debugLog(message, data) {
+    console.log('[Robocot WebView]', message, data || '');
+  }
+
   // Detect if running in Android WebView
   function isAndroidWebView() {
     const ua = navigator.userAgent.toLowerCase();
-    return ua.indexOf('wv') > -1 || ua.indexOf('android') > -1;
+    const isWebView = ua.indexOf('wv') > -1 || ua.indexOf('android') > -1;
+    debugLog('isAndroidWebView:', isWebView);
+    return isWebView;
   }
+
+  // Safe storage wrapper
+  const safeStorage = {
+    getItem: function(storage, key) {
+      try {
+        return storage.getItem(key);
+      } catch (e) {
+        debugLog('Storage getItem error:', e.message);
+        return null;
+      }
+    },
+    setItem: function(storage, key, value) {
+      try {
+        storage.setItem(key, value);
+        return true;
+      } catch (e) {
+        debugLog('Storage setItem error:', e.message);
+        return false;
+      }
+    },
+    removeItem: function(storage, key) {
+      try {
+        storage.removeItem(key);
+        return true;
+      } catch (e) {
+        debugLog('Storage removeItem error:', e.message);
+        return false;
+      }
+    }
+  };
 
   // Reset navigation to home page for WebView on first load
   function resetNavigationForWebView() {
     if (!isAndroidWebView()) return;
 
-    const isFirstLoad = !sessionStorage.getItem('robocot-webview-initialized');
+    debugLog('resetNavigationForWebView called');
+
+    const isFirstLoad = !safeStorage.getItem(sessionStorage, 'robocot-webview-initialized');
+    debugLog('isFirstLoad:', isFirstLoad);
 
     if (isFirstLoad) {
-      sessionStorage.setItem('robocot-webview-initialized', 'true');
+      safeStorage.setItem(sessionStorage, 'robocot-webview-initialized', 'true');
 
       // Clear any saved routing state
       try {
@@ -27,13 +67,15 @@
             keysToRemove.push(key);
           }
         }
-        keysToRemove.forEach(key => localStorage.removeItem(key));
+        keysToRemove.forEach(key => safeStorage.removeItem(localStorage, key));
+        debugLog('Cleared routing keys:', keysToRemove.length);
       } catch (e) {
-        console.warn('Could not clear localStorage:', e);
+        debugLog('Could not clear localStorage:', e.message);
       }
 
       // Force navigation to root if not already there
       if (window.location.pathname !== '/' && window.location.pathname !== '') {
+        debugLog('Redirecting to root from:', window.location.pathname);
         window.history.replaceState(null, '', '/');
         window.location.reload();
       }
@@ -337,18 +379,62 @@
   }
 
   function init() {
-    resetNavigationForWebView();
-    injectHidingStyles();
-    setupLevelSelectionTweaks();
-    applyResponsiveLogoBehavior();
-    enableWebViewVideoSupport();
+    debugLog('Initializing Robocot customizations');
+    debugLog('Document ready state:', document.readyState);
+    debugLog('Root element exists:', !!document.getElementById('root'));
+    debugLog('User Agent:', navigator.userAgent);
+
+    try {
+      resetNavigationForWebView();
+      debugLog('resetNavigationForWebView completed');
+    } catch (e) {
+      debugLog('Error in resetNavigationForWebView:', e.message);
+    }
+
+    try {
+      injectHidingStyles();
+      debugLog('injectHidingStyles completed');
+    } catch (e) {
+      debugLog('Error in injectHidingStyles:', e.message);
+    }
+
+    try {
+      setupLevelSelectionTweaks();
+      debugLog('setupLevelSelectionTweaks completed');
+    } catch (e) {
+      debugLog('Error in setupLevelSelectionTweaks:', e.message);
+    }
+
+    try {
+      applyResponsiveLogoBehavior();
+      debugLog('applyResponsiveLogoBehavior completed');
+    } catch (e) {
+      debugLog('Error in applyResponsiveLogoBehavior:', e.message);
+    }
+
+    try {
+      enableWebViewVideoSupport();
+      debugLog('enableWebViewVideoSupport completed');
+    } catch (e) {
+      debugLog('Error in enableWebViewVideoSupport:', e.message);
+    }
+
     mobileQuery.addEventListener('change', applyResponsiveLogoBehavior);
     landscapeQuery.addEventListener('change', applyResponsiveLogoBehavior);
+
+    debugLog('Initialization complete');
   }
 
+  debugLog('Script loaded, waiting for DOM');
+
   if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    debugLog('DOM already ready, initializing immediately');
     init();
   } else {
-    document.addEventListener('DOMContentLoaded', init, { once: true });
+    debugLog('Waiting for DOMContentLoaded event');
+    document.addEventListener('DOMContentLoaded', function() {
+      debugLog('DOMContentLoaded fired');
+      init();
+    }, { once: true });
   }
 })();
