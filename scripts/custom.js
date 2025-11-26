@@ -153,6 +153,17 @@
           bottom: 28px !important;
         }
       }
+
+      /* Move navigation links down by 30% */
+      nav._8578b a[href="/brett"],
+      nav._8578b a[href="/"] {
+        transform: translateY(30vh) !important;
+      }
+
+      /* Move help button down by 30% */
+      .c5c2b._19a74 {
+        transform: translateY(30vh) !important;
+      }
     `;
 
     document.head.appendChild(style);
