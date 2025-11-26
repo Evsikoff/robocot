@@ -133,22 +133,18 @@
     const style = document.createElement('style');
     style.id = mobileButtonStyleId;
     style.textContent = `
-      /* Mobile portrait and landscape - adjust "Выбрать уровень" button */
-      @media screen and (max-width: 599px) {
-        .be2f2 {
-          top: calc(50% + 80px) !important;
-        }
+      /* Adjust "Выбрать уровень" button for all devices */
+      .be2f2 {
+        top: calc(50% + 80px) !important;
       }
 
-      /* Mobile portrait and landscape - adjust note button */
-      @media screen and (max-width: 599px) {
-        ._400b2 {
-          bottom: 20px !important;
-        }
+      /* Adjust note button for all devices */
+      ._400b2 {
+        bottom: 20px !important;
       }
 
-      /* Mobile landscape - fine tune button positions */
-      @media screen and (max-width: 599px) and (orientation: landscape) {
+      /* Fine tune button positions for landscape orientation */
+      @media screen and (orientation: landscape) {
         .be2f2 {
           top: calc(50% + 60px) !important;
         }
